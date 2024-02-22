@@ -13,10 +13,12 @@
 <body class="body">
 <div class="wrapper">
     <?php
+
         if ($_GET['test1'])
         {
             $APPLICATION->ShowPanel();
         }
+
      ?>
     <header class="header" id="header">
         <div class="header-wrapper">

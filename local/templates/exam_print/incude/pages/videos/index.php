@@ -79,14 +79,24 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     </svg>
                 </div>
                 <div class="header-main__col left">
-                    <div class="header-main__navigation">
-                        <div class="header-main__navigation-col">
-                            <nav class="header-main__navigation-nav"><a class="header-main__navigation-link" href="#">О компании</a><a class="header-main__navigation-link" href="#">Работа у нас</a><a class="header-main__navigation-link" href="#">Новости и акции</a><a class="header-main__navigation-link" href="#">Торговые марки</a><a class="header-main__navigation-link" href="#">Рецепты</a></nav>
-                        </div>
-                        <div class="header-main__navigation-col">
-                            <nav class="header-main__navigation-nav"><a class="header-main__navigation-link" href="#">Партнерам</a><a class="header-main__navigation-link" href="#">Где купить</a><a class="header-main__navigation-link" href="#">Контакты</a><a class="header-main__navigation-link" href="#">Видео</a></nav>
-                        </div>
-                    </div>
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "first_test_menu",
+                        [
+                            "ROOT_MENU_TYPE" => "top",
+                            "MAX_LEVEL" => "1",
+                            "CHILD_MENU_TYPE" => "top",
+                            "USE_EXT" => "Y",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "Y",
+                            "MENU_CACHE_TYPE" => "N",
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "MENU_CACHE_GET_VARS" => ""
+                        ]
+                    );
+                    ?>
                 </div>
                 <div class="header-main__col right">
                     <div class="header-main__contacts">

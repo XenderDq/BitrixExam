@@ -4,7 +4,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 }
 ?>
 <main class="main">
-    <div class="banner"></div>
+<!--    <div class="banner"></div>-->
     <div class="header-main" data-header-menu data-overlay-on data-header-component="menu">
         <div class="header-main__wrapper desktop">
             <div class="header-main__inner">
@@ -76,27 +76,26 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                 <rect width="1840" height="54" fill="white"></rect>
                             </clippath>
                         </defs>
-                    </svg></div>
-                <div class="header-main__col left">
-                    <div class="header-main__navigation">
-                        <div class="header-main__navigation-col">
-                            <nav class="header-main__navigation-nav">
-                                <a class="header-main__navigation-link" href="/about/">О компании</a>
-                                <a class="header-main__navigation-link" href="/work/">Работа у нас</a>
-                                <a class="header-main__navigation-link" href="/news/">Новости и акции</a>
-                                <a class="header-main__navigation-link" href="/rent_buy/">Торговые марки</a>
-                                <a class="header-main__navigation-link" href="/receptureF/">Рецепты</a>
-                            </nav>
-                        </div>
-                        <div class="header-main__navigation-col">
-                            <nav class="header-main__navigation-nav">
-                                <a class="header-main__navigation-link" href="/partners/">Партнерам</a>
-                                <a class="header-main__navigation-link" href="/where_buy/">Где купить</a>
-                                <a class="header-main__navigation-link" href= "/contacts/">Контакты</a>
-                                <a class="header-main__navigation-link" href="/videos/">Видео</a></nav>
-                        </div>
-                    </div>
+                    </svg>
                 </div>
+                <?php
+                $APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "first_test_menu",
+                    [
+                        "ROOT_MENU_TYPE" => "top",
+                        "MAX_LEVEL" => "1",
+                        "CHILD_MENU_TYPE" => "top",
+                        "USE_EXT" => "Y",
+                        "DELAY" => "N",
+                        "ALLOW_MULTI_SELECT" => "Y",
+                        "MENU_CACHE_TYPE" => "N",
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "MENU_CACHE_GET_VARS" => ""
+                    ]
+                );
+                ?>
                 <div class="header-main__col right">
                     <div class="header-main__contacts">
                         <div class="header-main__contacts-col">
