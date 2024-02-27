@@ -66,13 +66,13 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <?php
 $APPLICATION->IncludeComponent(
     "bitrix:catalog.section.list",
-    "main_catalog",
+    "main_catalog2",
     Array(
         "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
         "VIEW_MODE" => "TEXT",
         "SHOW_PARENT_NAME" => "Y",
         "IBLOCK_TYPE" => "",
-        "IBLOCK_ID" => "5",
+        "IBLOCK_ID" => "8",
         "SECTION_ID" => $_REQUEST["SECTION_ID"],
         "SECTION_CODE" => "",
         "SECTION_URL" => "",
@@ -257,7 +257,8 @@ $APPLICATION->IncludeComponent(
                     <div class="main-filials__card-row">
                         <div class="main-filials__card-icons short">
                             <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-card-icons2.webp"><img class="picture__img" src="local/templates/exam_print/<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-card-icons2.png">
+                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-card-icons2.webp">
+                                <img class="picture__img" src="local/templates/exam_print/<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-card-icons2.png">
                             </picture>
                         </div>
                         <div class="button button-arrow_right btn-hover_parent">
@@ -267,7 +268,9 @@ $APPLICATION->IncludeComponent(
                         </div>
                     </div>
                 </div>
-            </a></div>
+            </a>
+        </div>
+
     </section>
     <section class="main-news" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
