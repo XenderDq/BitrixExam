@@ -13,7 +13,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                 <?php foreach ($arResult['FIRST'] as $item): ?>
                     <a class="header-main__navigation-link" href="<?=$item['LINK']?>"><?=$item['TEXT']?></a>
                 <?php endforeach; ?>
-
             </nav>
         </div>
         <div class="header-main__navigation-col">

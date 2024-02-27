@@ -209,7 +209,6 @@
                             "MENU_CACHE_GET_VARS" => ""
                         ]
                     );
-
                     ?>
                     <div class="header-main__col right">
                         <div class="header-main__contacts">
@@ -222,8 +221,6 @@
                                     "PATH" => "/include/header/1.php"
                                 ]
                             );
-
-
                             $APPLICATION->IncludeComponent(
                                 "bitrix:main.include",
                                 "",

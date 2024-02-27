@@ -3,96 +3,97 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     exit;
 }
 ?>
-    <section class="top-section top-section_main">
-                        <?php
-                        $APPLICATION->IncludeComponent(
-                            "bitrix:news.list",
-                            "slider_main",
-                            [
-                                "DISPLAY_DATE" => "Y",
-                                "DISPLAY_NAME" => "Y",
-                                "DISPLAY_PICTURE" => "Y",
-                                "DISPLAY_PREVIEW_TEXT" => "Y",
-                                "AJAX_MODE" => "Y",
-                                "IBLOCK_TYPE" => "news",
-                                "IBLOCK_ID" => "6",
-                                "NEWS_COUNT" => "20",
-                                "SORT_BY1" => "SORT",
-                                "SORT_ORDER1" => "ASC",
-                                "FILTER_NAME" => "",
-                                "FIELD_CODE" => Array("ID"),
-                                "PROPERTY_CODE" => Array("DESCRIPTION"),
-                                "CHECK_DATES" => "Y",
-                                "DETAIL_URL" => "",
-                                "PREVIEW_TRUNCATE_LEN" => "",
-                                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                                "SET_TITLE" => "Y",
-                                "SET_BROWSER_TITLE" => "Y",
-                                "SET_META_KEYWORDS" => "Y",
-                                "SET_META_DESCRIPTION" => "Y",
-                                "SET_LAST_MODIFIED" => "Y",
-                                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-                                "ADD_SECTIONS_CHAIN" => "Y",
-                                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
-                                "PARENT_SECTION" => "",
-                                "PARENT_SECTION_CODE" => "",
-                                "INCLUDE_SUBSECTIONS" => "Y",
-                                "CACHE_TYPE" => "A",
-                                "CACHE_TIME" => "3600",
-                                "CACHE_FILTER" => "Y",
-                                "CACHE_GROUPS" => "Y",
-                                "DISPLAY_TOP_PAGER" => "Y",
-                                "DISPLAY_BOTTOM_PAGER" => "Y",
-                                "PAGER_TITLE" => "Новости",
-                                "PAGER_SHOW_ALWAYS" => "Y",
-                                "PAGER_TEMPLATE" => "",
-                                "PAGER_DESC_NUMBERING" => "Y",
-                                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                                "PAGER_SHOW_ALL" => "Y",
-                                "PAGER_BASE_LINK_ENABLE" => "Y",
-                                "SET_STATUS_404" => "Y",
-                                "SHOW_404" => "Y",
-                                "MESSAGE_404" => "",
-                                "PAGER_BASE_LINK" => "",
-                                "PAGER_PARAMS_NAME" => "arrPager",
-                                "AJAX_OPTION_JUMP" => "N",
-                                "AJAX_OPTION_STYLE" => "Y",
-                                "AJAX_OPTION_HISTORY" => "N",
-                                "AJAX_OPTION_ADDITIONAL" => ""
-                            ]
-                        );?>
+<section class="top-section top-section_main">
+        <?php
+        $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "slider_main",
+            [
+                "DISPLAY_DATE" => "Y",
+                "DISPLAY_NAME" => "Y",
+                "DISPLAY_PICTURE" => "Y",
+                "DISPLAY_PREVIEW_TEXT" => "Y",
+                "AJAX_MODE" => "Y",
+                "IBLOCK_TYPE" => "news",
+                "IBLOCK_ID" => "6",
+                "NEWS_COUNT" => "20",
+                "SORT_BY1" => "SORT",
+                "SORT_ORDER1" => "ASC",
+                "FILTER_NAME" => "",
+                "FIELD_CODE" => Array("ID"),
+                "PROPERTY_CODE" => Array("DESCRIPTION"),
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "SET_TITLE" => "Y",
+                "SET_BROWSER_TITLE" => "Y",
+                "SET_META_KEYWORDS" => "Y",
+                "SET_META_DESCRIPTION" => "Y",
+                "SET_LAST_MODIFIED" => "Y",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                "ADD_SECTIONS_CHAIN" => "Y",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "",
+                "INCLUDE_SUBSECTIONS" => "Y",
+                "CACHE_TYPE" => "A",
+                "CACHE_TIME" => "3600",
+                "CACHE_FILTER" => "Y",
+                "CACHE_GROUPS" => "Y",
+                "DISPLAY_TOP_PAGER" => "Y",
+                "DISPLAY_BOTTOM_PAGER" => "Y",
+                "PAGER_TITLE" => "Новости",
+                "PAGER_SHOW_ALWAYS" => "Y",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_DESC_NUMBERING" => "Y",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "Y",
+                "PAGER_BASE_LINK_ENABLE" => "Y",
+                "SET_STATUS_404" => "Y",
+                "SHOW_404" => "Y",
+                "MESSAGE_404" => "",
+                "PAGER_BASE_LINK" => "",
+                "PAGER_PARAMS_NAME" => "arrPager",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "Y",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_ADDITIONAL" => ""
+            ]
+        );?>
     </section>
 
 <?php
-$APPLICATION->IncludeComponent(
-    "bitrix:catalog.section.list",
-    "main_catalog2",
-    Array(
-        "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
-        "VIEW_MODE" => "TEXT",
-        "SHOW_PARENT_NAME" => "Y",
-        "IBLOCK_TYPE" => "",
-        "IBLOCK_ID" => "8",
-        "SECTION_ID" => $_REQUEST["SECTION_ID"],
-        "SECTION_CODE" => "",
-        "SECTION_URL" => "",
-        "COUNT_ELEMENTS" => "Y",
-        "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
-        "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
-        "TOP_DEPTH" => "2",
-        "SECTION_FIELDS" => "",
-        "SECTION_USER_FIELDS" => "",
-        "ADD_SECTIONS_CHAIN" => "Y",
-        "CACHE_TYPE" => "A",
-        "CACHE_TIME" => "36000000",
-        "CACHE_NOTES" => "",
-        "CACHE_GROUPS" => "Y"
-    )
-);
+    $APPLICATION->IncludeComponent(
+        "bitrix:catalog.section.list",
+        "main_catalog2",
+        Array(
+            "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
+            "VIEW_MODE" => "TEXT",
+            "SHOW_PARENT_NAME" => "Y",
+            "IBLOCK_TYPE" => "",
+            "IBLOCK_ID" => "8",
+            "SECTION_ID" => $_REQUEST["SECTION_ID"],
+            "SECTION_CODE" => "",
+            "SECTION_URL" => "",
+            "COUNT_ELEMENTS" => "Y",
+            "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
+            "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
+            "TOP_DEPTH" => "2",
+            "SECTION_FIELDS" => "",
+            "SECTION_USER_FIELDS" => "",
+            "ADD_SECTIONS_CHAIN" => "Y",
+            "CACHE_TYPE" => "A",
+            "CACHE_TIME" => "36000000",
+            "CACHE_NOTES" => "",
+            "CACHE_GROUPS" => "Y"
+        )
+    );
 ?>
 
     <section class="main-traditions container-fluid" data-aos="fade-up" data-aos-duration="1500">
-        <div class="main-traditions__bg"><svg width="1920" height="1390" viewbox="0 0 1920 1390" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="main-traditions__bg">
+            <svg width="1920" height="1390" viewbox="0 0 1920 1390" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_112_14072)">
                     <path d="M852.866 1631.13C893.576 1133.75 1140.32 88.0227 2485.18 0.229725C2579.7 -5.78834 2629.96 107.847 2562.7 175.108L1027.74 1710.42C959.773 1778.75 845.078 1726.35 852.866 1631.13Z" fill="#EAF3FF"></path>
                     <path d="M-573.419 1.29304C-76.0432 42.3575 969.683 288.744 1057.48 1633.6C1063.49 1728.12 949.861 1778.39 882.6 1711.13L-652.715 176.171C-721.038 108.202 -668.646 -6.49505 -573.419 1.29304Z" fill="#EAF3FF"></path>
@@ -102,7 +103,8 @@ $APPLICATION->IncludeComponent(
                         <rect width="1920" height="1390" fill="white"></rect>
                     </clippath>
                 </defs>
-            </svg></div>
+            </svg>
+        </div>
         <div class="container" data-aos="fade-up" data-aos-duration="1500">
             <div class="main-traditions__logo"><svg xmlns="http://www.w3.org/2000/svg" width="143" height="75" viewbox="0 0 143 75" fill="none">
                     <path d="M0 11.3017L4.19833 10.6986C4.26064 11.2899 4.4943 11.7599 4.89154 12.1084C5.28879 12.4569 5.81844 12.6331 6.46883 12.6331C6.99459 12.6331 7.43468 12.4961 7.79298 12.222C8.15128 11.9478 8.33043 11.5876 8.33043 11.1411C8.33043 10.6947 8.12401 10.3383 7.71509 10.0642C7.30616 9.7901 6.78429 9.65305 6.15337 9.65305H5.207V6.28916H6.15337C7.37236 6.28916 7.98381 5.80358 7.98381 4.82848C7.98381 4.44863 7.83193 4.14319 7.52426 3.90822C7.22048 3.67718 6.81545 3.55969 6.30916 3.55969C5.84571 3.55969 5.4368 3.69675 5.0785 3.97087C4.7202 4.24499 4.49821 4.62484 4.41642 5.11435L0.630914 4.06485C1.00868 2.79605 1.68635 1.80138 2.66778 1.08083C3.64531 0.360279 4.90324 0 6.43769 0C8.1435 0 9.51047 0.379873 10.5386 1.1435C11.5707 1.90321 12.0848 2.89005 12.0848 4.09619C12.0848 5.61952 11.4227 6.81393 10.0946 7.68329C10.9164 8.02007 11.5824 8.51741 12.1003 9.1753C12.6144 9.82928 12.8754 10.5929 12.8754 11.4583C12.8754 13.0678 12.2912 14.3092 11.1228 15.1864C9.95445 16.0636 8.40442 16.5022 6.46883 16.5022C4.59555 16.5022 3.08836 16.0245 1.93947 15.0729C0.790584 14.1252 0.144098 12.8681 0 11.3017Z" fill="#F64653"></path>
@@ -221,7 +223,9 @@ $APPLICATION->IncludeComponent(
                 </a>
             </div>
         </div>
-        <div class="main-filials__bottom" data-aos="fade-up" data-aos-duration="1500"><a class="main-filials__card where-buy btn-hover_parent" href="#">
+
+        <div class="main-filials__bottom" data-aos="fade-up" data-aos-duration="1500">
+            <a class="main-filials__card where-buy btn-hover_parent" href="#">
                 <div class="main-filials__card-top">
                     <div class="main-filials__card-title">где купить</div>
                     <div class="main-filials__card-text">Локальные, федеральные сети и&nbsp;маркетплейсы</div>
