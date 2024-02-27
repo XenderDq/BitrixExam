@@ -1,7 +1,8 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
-}?>
+}
+?>
 <div class="swiper-slide main-slider__slide">
     <div class="main-slider__slide-bg desktop" data-swiper-parallax="1440" data-bg-parallax>
         <picture class="picture">
@@ -115,7 +116,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
 <div class="swiper-slide main-slider__slide">
     <div class="main-slider__slide-bg desktop" data-swiper-parallax="1440" data-bg-parallax>
         <picture class="picture">
-            <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-slider-bg5.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-slider-bg5.png">
+            <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-slider-bg5.webp">
+            <img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-slider-bg5.png">
         </picture>
     </div>
     <div class="main-slider__slide-bg devices">
