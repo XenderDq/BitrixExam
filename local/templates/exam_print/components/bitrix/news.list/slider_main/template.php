@@ -5,7 +5,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
 ?>
 <?php
 //echo '<pre>';
-//var_dump($arParams);
+//var_dump($arResult);
 //echo '</pre>';
 ?>
 
@@ -99,8 +99,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                 <div class="swiper-slide main-slider__slide">
                     <div class="main-slider__slide-bg mobile bg-bg-bg">
                         <picture class="picture">
-                            <source type="image/webp" srcset="<?=$item["PREVIEW_PICTURE"]["SRC"]?>">
-                            <img class="picture__img" src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>">
+                            <source type="image/webp" srcset="<?=$item["DETAIL_PICTURE"]["SRC"]?>">
+                            <img class="picture__img" src="<?=$item["DETAIL_PICTURE"]["SRC"]?>">
                         </picture>
                     </div>
                     <div class="main-slider__content">
