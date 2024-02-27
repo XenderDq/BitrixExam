@@ -233,10 +233,6 @@
                                 ]
                             );
                             ?>
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -271,21 +267,6 @@
                                 </svg></div>
                         </div>
                     </div>
-                    <div class="header-main__col">
-                        <div class="header-main__navigation">
-                            <div class="header-main__navigation-col left">
-                                <nav class="header-main__navigation-nav"><a class="header-main__navigation-link" href="#">О компании</a>
-                                    <a class="header-main__navigation-link" href="#">Работа у нас</a>
-                                    <a class="header-main__navigation-link" href="#">Новости и акции</a>
-                                    <a class="header-main__navigation-link" href="#">Торговые марки</a>
-                                    <a class="header-main__navigation-link" href="#">Партнерам</a>
-                                </nav>
-                            </div>
-                            <div class="header-main__navigation-col">
-                                <nav class="header-main__navigation-nav"><a class="header-main__navigation-link" href="#">Рецепты</a><a class="header-main__navigation-link" href="#">Где купить</a><a class="header-main__navigation-link" href="#">Контакты</a><a class="header-main__navigation-link" href="#">Видео</a></nav>
-                            </div>
-                        </div>
-                    </div>
                     <div class="header-main__contacts-col">
                         <div class="header-main__contacts-top"><a class="header-main__contacts-policy" href="#">Политика конфиденциальности</a>
                             <div class="header-main__contacts-copy">© 2008-2023 «Здоровые продукты»</div>
@@ -305,6 +286,7 @@
                     <div class="header-production__inner-title">Продукция</div>
                 </div>
                 <div class="header-production__items">
+
                 <?php
                     $APPLICATION->IncludeComponent(
                             "bitrix:catalog.section.list",

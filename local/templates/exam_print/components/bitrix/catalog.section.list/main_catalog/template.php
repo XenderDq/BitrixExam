@@ -6,7 +6,7 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 ?>
 
 <div class="main-catalog__list header-prod">
-    <a class="main-catalog__item btn-hover_parent" href="#">
+    <a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
         <div class="main-catalog__item-bg desktop-only">
             <picture class="picture">
                 <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg1-header.webp">
@@ -15,7 +15,8 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         </div>
         <div class="main-catalog__item-bg mobile-only">
             <picture class="picture">
-                <source type="image/webp" srcset="a/local/templates/exam_print/<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile1.png">
+                <source type="image/webp" srcset="a/local/templates/exam_print/<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile1.webp">
+                <img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile1.png">
             </picture>
         </div>
         <div class="main-catalog__item-row">
@@ -66,7 +67,7 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                 </svg>
             </div>
         </div>
-    </a><a class="main-catalog__item btn-hover_parent" href="">
+    </a><a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
         <div class="main-catalog__item-bg desktop-only">
             <picture class="picture">
                 <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg2-header.webp">
@@ -127,15 +128,17 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                 </svg>
             </div>
         </div>
-    </a><a class="main-catalog__item btn-hover_parent" href="#">
+    </a><a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
         <div class="main-catalog__item-bg desktop-only">
             <picture class="picture">
-                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg3-header.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg3-header.png">
+                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg3-header.webp">
+                <img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-catalog-item-bg3-header.png">
             </picture>
         </div>
         <div class="main-catalog__item-bg mobile-only">
             <picture class="picture">
-                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile3.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>images/header-production-mobile3.png">
+                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/header-production-mobile3.webp">
+                <img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>images/header-production-mobile3.png">
             </picture>
         </div>
         <div class="main-catalog__item-row">
