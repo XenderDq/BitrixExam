@@ -3,7 +3,6 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     exit;
 }
 ?>
-
     <section class="top-section top-section_main">
                         <?php
                         $APPLICATION->IncludeComponent(
