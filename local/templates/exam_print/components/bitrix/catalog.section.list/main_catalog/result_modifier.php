@@ -13,19 +13,27 @@ foreach ($arResult['ITEMS'] as $i => $item) {
     $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['WIDTH'] = $newImage['width'];
     $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['HEIGHT'] = $newImage['height'];
     $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['SRC'] = $newImage['src'];
-}
-//foreach ($arResult['ITEMS'] as $i => $item) {
+
+    echo '<pre>';
+    var_dump('work12');
+    echo '</pre>';
+    echo '<pre>';
+    var_dump($item);
+    echo '</pre>';
+
 //    if (["DETAIL_PICTURE"]) {
 //        $ID_PICTYRE1[$i] = $item["DETAIL_PICTURE"];
 //    }
 //    $URL1[$i] = CFile::GetPath($ID_PICTYRE1);
 //    $arResult['ITEMS'][$i]['DETAIL_PICTURE'] = $URL1[$i];
-//}
+
+}
+
 //echo '<pre>';
 //var_dump($arResult);
 //echo '</pre>';
-
-$imagePath = CFile::GetPath($arResult['DETAIL_PICTURE']);
-echo '<pre>';
-var_dump($DETAIL_PICTURE);
-echo '</pre>';
+//
+//$imagePath = CFile::GetPath($arResult['DETAIL_PICTURE']);
+//echo '<pre>';
+//var_dump($DETAIL_PICTURE);
+//echo '</pre>';
