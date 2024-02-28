@@ -1,10 +1,10 @@
 <?php
-
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 //echo '<pre>';
-//var_dump($arParams);
+//var_dump($arResult);
 //echo '</pre>';
 ?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
