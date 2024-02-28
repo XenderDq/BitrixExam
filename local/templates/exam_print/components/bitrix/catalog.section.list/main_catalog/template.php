@@ -2,12 +2,15 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
-//echo '<pre>';
-//var_dump($arResult);
-//echo '</pre>';
+$lenght_of_arr = -1;
+    foreach ($arResult['SECTIONS'] as $i => $item) {
+        if ($item['NAME']) {
+            $lenght_of_arr++;
+        }
+    }
 ?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
+
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
         <a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
             <div class="main-catalog__item-bg desktop-only">
@@ -63,8 +66,13 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </defs>
                     </svg>
                 </div>
+                <?php if ($lenght_of_arr == $i):?>
+                    <div class="main-catalog__item-title blue"><?=$item["NAME"]?></div>
+                <?php else:?>
                 <div class="main-catalog__item-title white"><?=$item["NAME"]?></div>
+                <?php endif?>
             </div>
+
             <div class="main-catalog__item-svg">
                 <div class="button button-arrow_right btn-hover_parent">
                     <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
@@ -73,5 +81,5 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                 </div>
             </div>
         </a>
-    <?php endforeach; ?>
+    <?php endforeach;  ?>
 </div>

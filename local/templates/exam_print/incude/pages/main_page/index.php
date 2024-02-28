@@ -89,7 +89,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             "VIEW_MODE" => "TEXT",
             "SHOW_PARENT_NAME" => "Y",
             "IBLOCK_TYPE" => "",
-            "IBLOCK_ID" => "8",
+            "IBLOCK_ID" => "5",
             "SECTION_ID" => $_REQUEST["SECTION_ID"],
             "SECTION_CODE" => "",
             "SECTION_URL" => "",

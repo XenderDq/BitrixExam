@@ -1,5 +1,9 @@
 <?php
-foreach ($arResult['ITEMS'] as $i => $item) {
+
+$length_of_arr = array_key_last($arResult['SECTIONS']);
+
+
+foreach ($arResult['SECTIONS'] as $i => $item) {
     if ($item['PREVIEW_PICTURE']) {
         $newImage = CFile::ResizeImageGet(
             $item['PREVIEW_PICTURE']['ID'],
@@ -9,17 +13,42 @@ foreach ($arResult['ITEMS'] as $i => $item) {
             ],
             BX_RESIZE_IMAGE_PROPORTIONAL,
             true);
+        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['WIDTH'] = $newImage['width'];
+        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['HEIGHT'] = $newImage['height'];
+        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['SRC'] = $newImage['src'];
     }
-    $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['WIDTH'] = $newImage['width'];
-    $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['HEIGHT'] = $newImage['height'];
-    $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['SRC'] = $newImage['src'];
+}
+$length_of_arr = count($arResult["SECTIONS"]);
 
-    echo '<pre>';
-    var_dump('work12');
-    echo '</pre>';
-    echo '<pre>';
-    var_dump($item);
-    echo '</pre>';
+//foreach ($arResult['SECTIONS'] as $i => $item) {
+//    if ($item['NAME']) {
+//        $lenght_of_arr++;
+//        $lene=$i;
+//    }
+//}
+//$lenght_of_arr--;
+
+//foreach ($arResult['SECTIONS'] as $i => $item) {
+//    if ($item['NAME']) {
+//        $lenght_of_arr++;
+//    }
+//}
+
+
+//echo '<pre>';
+//var_dump($lenght_of_arr);
+//echo '</pre>';
+//$lastElement = end($item["NAME"]);
+//echo '<pre>';
+//var_dump($lastElement);
+//echo '</pre>';
+
+//    echo '<pre>';
+//    var_dump('work12');
+//    echo '</pre>';
+//    echo '<pre>';
+//    var_dump($item);
+//    echo '</pre>';
 
 //    if (["DETAIL_PICTURE"]) {
 //        $ID_PICTYRE1[$i] = $item["DETAIL_PICTURE"];
@@ -27,7 +56,7 @@ foreach ($arResult['ITEMS'] as $i => $item) {
 //    $URL1[$i] = CFile::GetPath($ID_PICTYRE1);
 //    $arResult['ITEMS'][$i]['DETAIL_PICTURE'] = $URL1[$i];
 
-}
+
 
 //echo '<pre>';
 //var_dump($arResult);
