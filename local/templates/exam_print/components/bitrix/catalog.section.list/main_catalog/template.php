@@ -8,9 +8,11 @@ $lenght_of_arr = -1;
             $lenght_of_arr++;
         }
     }
+//echo '<pre>';
+//var_dump($arResult);
+//echo '</pre>';
 ?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
-
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
         <a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
             <div class="main-catalog__item-bg desktop-only">
@@ -66,7 +68,7 @@ $lenght_of_arr = -1;
                         </defs>
                     </svg>
                 </div>
-                <?php if ($lenght_of_arr == $i):?>
+                <?php if ($item['UF_123'] == 1):?>
                     <div class="main-catalog__item-title blue"><?=$item["NAME"]?></div>
                 <?php else:?>
                 <div class="main-catalog__item-title white"><?=$item["NAME"]?></div>

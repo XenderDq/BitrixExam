@@ -7,11 +7,6 @@ foreach ($arResult['ITEMS'] as $i => $item) {
                 'width' => 1610,
                 'height' => 665
             ],
-            $item['DETAIL_PICTURE']['ID'],
-            [
-                'width' => 1000,
-                'height' => 670
-            ],
             BX_RESIZE_IMAGE_EXACT,
             true);
         $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['WIDTH'] = $newImage['width'];

@@ -83,7 +83,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <?php
     $APPLICATION->IncludeComponent(
         "bitrix:catalog.section.list",
-        "main_catalog2",
+        "main_catalog",
         Array(
             "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
             "VIEW_MODE" => "TEXT",
@@ -98,7 +98,9 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
             "TOP_DEPTH" => "2",
             "SECTION_FIELDS" => "",
-            "SECTION_USER_FIELDS" => "",
+            "SECTION_USER_FIELDS" => [
+                    "UF_123"
+            ],
             "ADD_SECTIONS_CHAIN" => "Y",
             "CACHE_TYPE" => "A",
             "CACHE_TIME" => "36000000",
