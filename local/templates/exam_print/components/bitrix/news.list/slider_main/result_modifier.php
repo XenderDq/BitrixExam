@@ -31,7 +31,5 @@ foreach ($arResult['ITEMS'] as $i => $item) {
         $arResult['ITEMS'][$i]['DETAIL_PICTURE']['HEIGHT'] = $newImage1['height'];
         $arResult['ITEMS'][$i]['DETAIL_PICTURE']['SRC'] = $newImage1['src'];
     }
-
-
 }
 
