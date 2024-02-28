@@ -3,20 +3,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
 ?>
-<?php
 
-echo '<pre>';
-var_dump($arElement);
-echo '</pre>';
-?>
-<?php
-$resizeImage = CFile::ResizeImageGet(
-        $item["PREVIEW_PICTURE"]["SRC"],
-    array('width' => 200,
-          'height' => 200),
-    BX_RESIZE_IMAGE_PROPORTIONAL,
-    true);
-?>
+
 
 <div class="main-slider container desktop-t">
     <div class="main-slider__wrapper">
@@ -26,7 +14,7 @@ $resizeImage = CFile::ResizeImageGet(
                     <div class="swiper-slide main-slider__slide">
                     <div class="main-slider__slide-bg desktop" data-swiper-parallax="1440" data-bg-parallax>
                         <picture class="picture">
-                            <source type="image/webp" srcset="<?=$resizeImage['src']?>">
+                            <source type="image/webp" srcset="<?=$resizeImage['SRC']?>">
                             <img class="picture__img" src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>">
                         </picture>
                     </div>

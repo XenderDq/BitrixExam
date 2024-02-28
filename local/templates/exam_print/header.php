@@ -13,10 +13,7 @@
 <body class="body">
 <div class="wrapper">
     <?php
-
-
             $APPLICATION->ShowPanel();
-
      ?>
     <header class="header" id="header">
         <div class="header-wrapper">
