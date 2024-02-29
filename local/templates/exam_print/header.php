@@ -298,7 +298,8 @@
                         "TOP_DEPTH" => "2",
                         "SECTION_FIELDS" => "",
                         "SECTION_USER_FIELDS" => [
-                            'UF_123'
+                            'UF_123',
+                            'UF_PICTURE_FOR_MOBILE_VERSION'
                         ],
                         "ADD_SECTIONS_CHAIN" => "Y",
                         "CACHE_TYPE" => "A",

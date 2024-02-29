@@ -29,3 +29,8 @@
          $arResult['SECTIONS'][$i]['DETAIL_PICTURE'] = CFile::GetPath($value['DETAIL_PICTURE']);
      }
  }
+ foreach ($arResult['SECTIONS'] as $i => $value) {
+     if (!empty($value['UF_PICTURE_FOR_MOBILE_VERSION'])) {
+         $arResult['SECTIONS'][$i]['UF_PICTURE_FOR_MOBILE_VERSION'] = CFile::GetPath($value['UF_PICTURE_FOR_MOBILE_VERSION']);
+     }
+ }

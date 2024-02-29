@@ -14,8 +14,8 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
             </div>
             <div class="main-catalog__item-bg mobile-only">
                 <picture class="picture">
-                    <source type="image/webp" srcset="<?=$item["PICTURE"]["SRC"]?>">
-                    <img class="picture__img" src="<?=$item["PICTURE"]["SRC"]?>">
+                    <source type="image/webp" srcset="<?=$item["UF_PICTURE_FOR_MOBILE_VERSION"]?>">
+                    <img class="picture__img" src="<?=$item["UF_PICTURE_FOR_MOBILE_VERSION"]?>">
                 </picture>
             </div>
             <div class="main-catalog__item-row">

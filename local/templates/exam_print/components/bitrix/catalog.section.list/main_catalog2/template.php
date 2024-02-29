@@ -2,6 +2,9 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+//echo '<pre>';
+//var_dump($arResult);
+//echo '</pre>';
 ?>
 <div class="main-catalog__list container" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
@@ -14,8 +17,8 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
             </div>
             <div class="main-catalog__item-bg mobile-only">
                 <picture class="picture">
-                    <source type="image/webp" srcset="<?=$item['DETAIL_PICTURE']?>">
-                    <img class="picture__img" src="<?=$item['DETAIL_PICTURE']?>">
+<!--                    <source type="image/webp" srcset="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
+<!--                    <img class="picture__img" src="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
                 </picture>
             </div>
             <div class="main-catalog__item-row">
