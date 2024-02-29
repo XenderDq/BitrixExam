@@ -83,7 +83,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <?php
     $APPLICATION->IncludeComponent(
         "bitrix:catalog.section.list",
-        "main_catalog",
+        "main_catalog2",
         Array(
             "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
             "VIEW_MODE" => "TEXT",

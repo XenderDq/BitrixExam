@@ -2,15 +2,6 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-$lenght_of_arr = -1;
-    foreach ($arResult['SECTIONS'] as $i => $item) {
-        if ($item['NAME']) {
-            $lenght_of_arr++;
-        }
-    }
-//echo '<pre>';
-//var_dump($arResult);
-//echo '</pre>';
 ?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
@@ -68,7 +59,7 @@ $lenght_of_arr = -1;
                         </defs>
                     </svg>
                 </div>
-                <?php if ($item['UF_123'] == 1):?>
+                <?php if ($item['UF_123'] == 'Y'):?>
                     <div class="main-catalog__item-title blue"><?=$item["NAME"]?></div>
                 <?php else:?>
                 <div class="main-catalog__item-title white"><?=$item["NAME"]?></div>
