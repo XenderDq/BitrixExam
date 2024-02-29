@@ -3,7 +3,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
 ?>
-
 <div class="main-slider container desktop-t">
     <div class="main-slider__wrapper">
         <div class="swiper main-swiper">

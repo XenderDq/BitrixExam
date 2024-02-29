@@ -144,33 +144,42 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     <path d="M74.6661 49.9997H79.5265L87.7946 27.5333H82.8096L80.0016 35.3067L77.0963 27.5333H71.7646L77.474 42.2576L74.6661 49.9997Z" fill="#F64653"></path>
                     <path d="M64.7476 71.8898C70.6022 78.5652 80.9906 72.0671 78.3343 70.4807C78.1158 70.3508 77.8612 70.2924 77.6077 70.2916C75.7982 70.2904 65.3927 70.2811 65.3927 70.2811C64.5521 70.2809 64.1373 71.3078 64.7476 71.8898Z" fill="#F64653"></path>
                 </svg></div>
-            <div class="main-traditions__top">
-                <h3 class="main-traditions__title animation-title" data-splitting data-effect1><span>сплав </span><span>традиций </span><span>и </span><span>инноваций</span></h3>
-                <div class="title-rombs">
-                    <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
-                            <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
-                            <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
-                            <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
-                            <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
-                        </svg></div>
-                    <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
-                            <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
-                            <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
-                            <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
-                            <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
-                        </svg></div>
-                </div>
-            </div>
+            <?php
+            $APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/include/main_page/1.3.php"
+                ]
+            );
+            ?>
+
             <div class="main-traditions__row">
                 <div class="main-traditions__col">
-                    <div class="main-traditions__text">Производим и дистрибуцируем продукцию с&nbsp;1996&nbsp;года.</div><a class="main-traditions__button btn-hover_parent desktop" href="#">
-                        <div class="btn-hover_circle"></div><span>Больше о&nbsp;нас</span>
-                    </a>
+
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/include/main_page/1.1.php"
+                        ]
+                    );
+                    ?>
                 </div>
                 <div class="main-traditions__col">
-                    <div class="main-traditions__text">Соединив самое лучшее из&nbsp;прошлого и&nbsp;настоящего, добавив сырье собственного производства, вложив свой труд и&nbsp;душу, мы приготовили для вас вкусные и&nbsp;полезные блюда.</div><a class="main-traditions__button btn-hover_parent mobile" href="#">
-                        <div class="btn-hover_circle"></div><span>Больше о&nbsp;нас</span>
-                    </a>
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/include/main_page/1.2.php"
+                        ]
+                    );
+                    ?>
                 </div>
             </div>
             <div class="main-traditions__video" data-button-fade="main-video">
@@ -206,6 +215,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <picture class="picture">
                     <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-bg.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-filials-bg.png">
                 </picture>
+<!--                создать файл с картинкой и обращаться к нему через велючаемую область-->
+<!--               -->
             </div>
             <div class="main-filials__landscape-bg devices">
                 <picture class="picture">
@@ -298,7 +309,16 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     <section class="main-news" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
             <div class="main-news__top">
-                <div class="main-news__title animation-title" data-splitting data-effect1><span>новости </span><span>и </span><span>акции</span></div>
+                <?php
+                $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    [
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => "/include/news/1.2.php"
+                    ]
+                );
+                ?>
                 <div class="title-rombs">
                     <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
                             <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
@@ -316,49 +336,80 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             </div>
             <div class="main-news__slider">
                 <div class="main-news__slider-wrapper">
-                    <div class="swiper main-news__swiper">
-                        <div class="swiper-wrapper"><a class="swiper-slide main-news__card" href="#">
-                                <div class="main-news__card-img">
-                                    <picture class="picture">
-                                        <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                                    </picture><span class="main-news__card-plug">выставки и конференции</span>
-                                </div>
-                                <p class="main-news__card-date">6 марта 2023</p>
-                                <p class="main-news__card-title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</p>
-                            </a><a class="swiper-slide main-news__card" href="#">
-                                <div class="main-news__card-img">
-                                    <picture class="picture">
-                                        <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                                    </picture><span class="main-news__card-plug">выставки и конференции</span>
-                                </div>
-                                <p class="main-news__card-date">6 марта 2023</p>
-                                <p class="main-news__card-title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</p>
-                            </a><a class="swiper-slide main-news__card" href="#">
-                                <div class="main-news__card-img">
-                                    <picture class="picture">
-                                        <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                                    </picture><span class="main-news__card-plug">выставки и конференции</span>
-                                </div>
-                                <p class="main-news__card-date">6 марта 2023</p>
-                                <p class="main-news__card-title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</p>
-                            </a><a class="swiper-slide main-news__card" href="#">
-                                <div class="main-news__card-img">
-                                    <picture class="picture">
-                                        <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                                    </picture><span class="main-news__card-plug">выставки и конференции</span>
-                                </div>
-                                <p class="main-news__card-date">6 марта 2023</p>
-                                <p class="main-news__card-title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</p>
-                            </a><a class="swiper-slide main-news__card" href="#">
-                                <div class="main-news__card-img">
-                                    <picture class="picture">
-                                        <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                                    </picture><span class="main-news__card-plug">выставки и конференции</span>
-                                </div>
-                                <p class="main-news__card-date">6 марта 2023</p>
-                                <p class="main-news__card-title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</p>
-                            </a></div>
-                    </div>
+                            <?php
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:news.list",
+                                "slider_news",
+                                array(
+                                    "DISPLAY_DATE" => "Y",
+                                    "DISPLAY_NAME" => "Y",
+                                    "DISPLAY_PICTURE" => "Y",
+                                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                                    "AJAX_MODE" => "Y",
+                                    "IBLOCK_TYPE" => "content",
+                                    "IBLOCK_ID" => "9",
+                                    "NEWS_COUNT" => "20",
+                                    "SORT_BY1" => "SORT",
+                                    "SORT_ORDER1" => "ASC",
+                                    "FILTER_NAME" => "",
+                                    "FIELD_CODE" => array(
+                                        0 => "ID",
+                                        1 => "NAME",
+                                        2 => "PREVIEW_TEXT",
+                                        3 => "PREVIEW_PICTURE",
+                                        4 => "DETAIL_PICTURE",
+                                        5 => "",
+                                    ),
+                                    "PROPERTY_CODE" => array(
+                                        0 => "",
+                                        1 => "LINK_SECTION_SLIDER",
+                                        2 => "LABEL",
+                                    ),
+                                    "CHECK_DATES" => "Y",
+                                    "DETAIL_URL" => "",
+                                    "PREVIEW_TRUNCATE_LEN" => "",
+                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                    "SET_TITLE" => "Y",
+                                    "SET_BROWSER_TITLE" => "Y",
+                                    "SET_META_KEYWORDS" => "Y",
+                                    "SET_META_DESCRIPTION" => "Y",
+                                    "SET_LAST_MODIFIED" => "Y",
+                                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                                    "ADD_SECTIONS_CHAIN" => "Y",
+                                    "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                                    "PARENT_SECTION" => "",
+                                    "PARENT_SECTION_CODE" => "",
+                                    "INCLUDE_SUBSECTIONS" => "Y",
+                                    "CACHE_TYPE" => "A",
+                                    "CACHE_TIME" => "3600",
+                                    "CACHE_FILTER" => "Y",
+                                    "CACHE_GROUPS" => "Y",
+                                    "DISPLAY_TOP_PAGER" => "Y",
+                                    "DISPLAY_BOTTOM_PAGER" => "Y",
+                                    "PAGER_TITLE" => "Новости",
+                                    "PAGER_SHOW_ALWAYS" => "Y",
+                                    "PAGER_TEMPLATE" => "",
+                                    "PAGER_DESC_NUMBERING" => "Y",
+                                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                    "PAGER_SHOW_ALL" => "Y",
+                                    "PAGER_BASE_LINK_ENABLE" => "Y",
+                                    "SET_STATUS_404" => "Y",
+                                    "SHOW_404" => "Y",
+                                    "MESSAGE_404" => "",
+                                    "PAGER_BASE_LINK" => "",
+                                    "PAGER_PARAMS_NAME" => "arrPager",
+                                    "AJAX_OPTION_JUMP" => "N",
+                                    "AJAX_OPTION_STYLE" => "Y",
+                                    "AJAX_OPTION_HISTORY" => "N",
+                                    "AJAX_OPTION_ADDITIONAL" => "",
+                                    "COMPONENT_TEMPLATE" => "slider_main",
+                                    "SORT_BY2" => "SORT",
+                                    "SORT_ORDER2" => "ASC",
+                                    "STRICT_SECTION_CHECK" => "N",
+                                    "FILE_404" => ""
+                                ),
+                                false
+                            );?>
                 </div>
                 <div class="slider-btn btn-hover_parent main-news__button_left">
                     <div class="white-circle">
@@ -375,9 +426,16 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     </div>
                 </div>
             </div>
-            <div class="main-news__bot"><a class="main-news__bot-button btn-hover_parent" href="#">
-                    <div class="btn-hover_circle"></div><span>Все новости и акции</span>
-                </a></div>
+            <?php
+            $APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/include/news/1.1.php"
+                ]
+            );
+            ?>
         </div>
     </section>
     <div class="popup-video" data-popup-fade="main-video">

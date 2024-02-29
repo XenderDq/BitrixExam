@@ -4,22 +4,27 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
 
 }
 ?>
-<div class="header-main__col left">
-    <div class="header-main__navigation">
-        <div class="header-main__navigation-col">
-            <nav class="header-main__navigation-nav">
-                <?php foreach ($arResult['FIRST'] as $item): ?>
-                    <a class="header-main__navigation-link" href="<?=$item['LINK']?>"><?=$item['TEXT']?></a>
-                <?php endforeach; ?>
-            </nav>
-        </div>
-        <div class="header-main__navigation-col">
-            <nav class="header-main__navigation-nav">
-                <?php foreach ($arResult['SECOND'] as $item): ?>
-                    <a class="header-main__navigation-link" href="<?=$item['LINK']?>"><?=$item['TEXT']?></a>
-                <?php endforeach; ?>
-        </div>
-    </div>
+<!--<div class="header-main__col left">-->
+<!--    <div class="header-main__navigation">-->
+<!--        -->
+<!--        <div class="header-main__navigation-col">-->
+<!--            <nav class="header-main__navigation-nav">-->
+<!--                --><?php //foreach ($arResult['SECOND'] as $item): ?>
+<!--                    <a class="header-main__navigation-link" href="--><?php //=$item['LINK']?><!--">--><?php //=$item['TEXT']?><!--</a>-->
+<!--                --><?php //endforeach; ?>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="footer-content__subcol-top">
+    <nav class="footer-content__nav">
+        <?php foreach ($arResult['FIRST'] as $item): ?>
+        <ul class="footer-content__nav-list">
+            <li class="footer-nav__list-item">
+                <a class="footer-content__nav-item" href="<?=$item['LINK']?>"><?=$item['TEXT']?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </nav>
 </div>
 
 
