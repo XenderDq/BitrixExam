@@ -15,10 +15,15 @@ foreach ($arResult['ITEMS'] as $i => $item) {
     }
 }
 
+$sectionName = [];
+
+$res = CIBlockSection::GetList(array(), array("IBLOCK_ID" => $arResult["ID"]));
+while ($ar_res = $res->GetNext()) {
+    $sectionName[$ar_res['ID']] = $ar_res['NAME'];
+}
+
 foreach ($arResult['ITEMS'] as $i => $value) {
-        $res = CIBlockSection::GetList(array(), array("ID" => $value["IBLOCK_SECTION_ID"]));
-        if ($ar_res = $res->GetNext()) {
-            $sectionName = $ar_res['NAME'];
+    if (isset($value['IBLOCK_SECTION_ID']) && isset($sectionName[$value['IBLOCK_SECTION_ID']])) {
+        $arResult['ITEMS'][$i]['IBLOCK_SECTION_ID'] = $sectionName[$value['IBLOCK_SECTION_ID']];
     }
-    $arResult['ITEMS'][$i]['IBLOCK_SECTION_ID'] = $sectionName;
 }

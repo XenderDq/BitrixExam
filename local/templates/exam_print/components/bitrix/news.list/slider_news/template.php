@@ -2,9 +2,9 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-echo '<pre>';
-var_dump($arResult['ITEMS']);
-echo '</pre>';
+//echo '<pre>';
+//var_dump($arResult);
+//echo '</pre>';
 ?>
     <div class="swiper main-news__swiper">
         <div class="swiper-wrapper">

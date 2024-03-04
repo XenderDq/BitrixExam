@@ -3,18 +3,26 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     exit;
 }
 ?>
+<?php
+    if ($_REQUEST['CODE']) :
+?>
+123 условие для вывода второй подстраницы
+<?php
+else :
+?>
     <section class="top-section">
         <section class="news-content container">
             <div class="breadcrumbs">
-                <div class="breadcrumbs-wrapper">
-                    <div class="breadcrumbs-wrapper__row"><a class="breadcrumbs__item" href="#">главная</a>
-                        <div class="breadcrumbs__arrow"><svg width="9" height="14" viewbox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.501732 0.71693C0.688798 2.76241 1.82258 7.06302 8.00226 7.42407C8.43495 7.44882 8.66756 6.9815 8.3585 6.70488L1.3053 0.390819C0.992979 0.109838 0.465946 0.325304 0.501732 0.71693Z" fill="#F64653"></path>
-                                <path d="M0.501732 13.2839C0.688798 11.2384 1.82258 6.9378 8.00226 6.57675C8.43495 6.552 8.66756 7.01934 8.3585 7.29595L1.3053 13.61C0.992979 13.8895 0.465946 13.6755 0.501732 13.2839Z" fill="#F64653"></path>
-                            </svg></div>
-                        <div class="breadcrumbs__current active">новости и акции</div>
-                    </div>
-                </div>
+                <?php
+                $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    [
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => "/include/News_comp/1.1.php"
+                    ]
+                );
+                ?>
             </div>
             <div class="news-content__top">
                 <h1 class="news-content__title">новости и акции</h1>
@@ -33,19 +41,19 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         </svg></div>
                 </div>
             </div>
-            <div class="news-content__categories" data-aos="fade-up">
-                <div class="news-content__categories-wrapper">
+
                         <?php
                     $APPLICATION->IncludeComponent(
                         "bitrix:catalog.section.list",
                         "buttons_news",
                         Array(
+                                "CURRENT_SECTION_CODE" => $_REQUEST['SECTION_CODE'],
                             "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
                             "VIEW_MODE" => "TEXT",
                             "SHOW_PARENT_NAME" => "Y",
                             "IBLOCK_TYPE" => "",
                             "IBLOCK_ID" => "9",
-                            "SECTION_ID" => $_REQUEST["SECTION_ID"],
+                            "SECTION_ID" => "",
                             "SECTION_CODE" => "",
                             "SECTION_URL" => "",
                             "COUNT_ELEMENTS" => "Y",
@@ -64,10 +72,6 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         )
                     );
                     ?>
-                </div>
-            </div>
-
-
 
             <?php
             $APPLICATION->IncludeComponent(
@@ -84,7 +88,7 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     "NEWS_COUNT" => "20",
                     "SORT_BY1" => "SORT",
                     "SORT_ORDER1" => "ASC",
-                    "FILTER_NAME" => "",
+                    "FILTER_NAME" => "myFilter",
                     "FIELD_CODE" => array(
                         0 => "ID",
                         1 => "NAME",
@@ -98,7 +102,7 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         1 => "LINK_SECTION_SLIDER",
                         2 => "LABEL",
                     ),
-                    "SECTION_ID" => $_REQUEST["SECTION_ID"],
+                    "SECTION_ID" => "",
                     "SECTION_CODE" => "",
                     "SECTION_URL" => "",
                     "CHECK_DATES" => "Y",
@@ -114,7 +118,7 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     "ADD_SECTIONS_CHAIN" => "Y",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
                     "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
+                    "PARENT_SECTION_CODE" => $_REQUEST['SECTION_CODE'],
                     "INCLUDE_SUBSECTIONS" => "Y",
                     "CACHE_TYPE" => "A",
                     "CACHE_TIME" => "3600",
@@ -156,6 +160,9 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             </div>
         </section>
     </section>
+<?php
+endif;
+?>
     <div class="container">
         <section class="section-mailing news-content__mailing" data-aos="fade-up">
             <div class="section-mailing__bg desktop">
