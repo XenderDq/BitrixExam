@@ -15,12 +15,15 @@ foreach ($arResult['SECTIONS'] as $i => $item) {
         $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['SRC'] = $newImage['src'];
     }
 }
-
 foreach ($arResult['SECTIONS'] as $i => $value) {
-    if (!empty($value['UF_123'])) {
-        $rsEnum = CUserFieldEnum::GetList(array(), array("ID" => $value["UF_123"]));
+    if (!empty($value['UF_BUTTONS_ACTIVITY'])) {
+        $rsEnum = CUserFieldEnum::GetList(array(), array("ID" => $value["UF_BUTTONS_ACTIVITY"]));
         $arEnum = $rsEnum->GetNext();
-        $arResult['SECTIONS'][$i]['UF_123'] = $arEnum['VALUE'];
+        $arResult['SECTIONS'][$i]['UF_BUTTONS_ACTIVITY'] = $arEnum['VALUE'];
     }
 }
-
+foreach ($arResult['SECTIONS'] as $i => $value) {
+    if (isset($_POST['button'])) {
+        $value['UF_BUTTONS_ACTIVITY'] = 'Y';
+    }
+}

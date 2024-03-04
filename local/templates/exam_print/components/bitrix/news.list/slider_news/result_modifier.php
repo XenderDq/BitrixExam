@@ -9,10 +9,24 @@ foreach ($arResult['ITEMS'] as $i => $item) {
             ],
             BX_RESIZE_IMAGE_EXACT,
             true);
-        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['WIDTH'] = $newImage['width'];
-        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['HEIGHT'] = $newImage['height'];
-        $arResult['ITEMS'][$i]['PREVIEW_PICTURE']['SRC'] = $newImage['src'];
+
+        $arResult['ITEMS'][$i]['PREVIEW_PICTURE'] = [
+            'WIDTH' => $newImage['width'],
+            'HEIGHT' => $newImage['height'],
+            'SRC' => $newImage['src'],
+        ];
+
     }
 }
+//
+//echo '<pre>';
+//var_dump($arResult);
+//echo '</pre>';
 
-
+foreach ($arResult['ITEMS'] as $i => $value) {
+        $res = CIBlockSection::GetList(array(), array("ID" => $value["IBLOCK_SECTION_ID"]));
+        if ($ar_res = $res->GetNext()) {
+            $sectionName = $ar_res['NAME'];
+    }
+    $arResult['ITEMS'][$i]['IBLOCK_SECTION_ID'] = $sectionName;
+}

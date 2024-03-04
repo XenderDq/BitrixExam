@@ -3,7 +3,6 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     exit;
 }
 ?>
-
     <section class="top-section">
         <section class="news-content container">
             <div class="breadcrumbs">
@@ -35,173 +34,123 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 </div>
             </div>
             <div class="news-content__categories" data-aos="fade-up">
-                <div class="news-content__categories-wrapper"><a class="news-content__categories-item active btn-hover_parent no-scale" href="#">
-                        <div class="btn-hover_circle white"></div><span>Все</span>
-                    </a><a class="news-content__categories-item btn-hover_parent no-scale" href="#">
-                        <div class="btn-hover_circle white"></div><span>Новости компании</span>
-                    </a><a class="news-content__categories-item btn-hover_parent no-scale" href="#">
-                        <div class="btn-hover_circle white"></div><span>Акции</span>
-                    </a><a class="news-content__categories-item btn-hover_parent no-scale" href="#">
-                        <div class="btn-hover_circle white"></div><span>Выставки и конференции</span>
-                    </a></div>
+                <div class="news-content__categories-wrapper">
+                        <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:catalog.section.list",
+                        "buttons_news",
+                        Array(
+                            "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
+                            "VIEW_MODE" => "TEXT",
+                            "SHOW_PARENT_NAME" => "Y",
+                            "IBLOCK_TYPE" => "",
+                            "IBLOCK_ID" => "9",
+                            "SECTION_ID" => $_REQUEST["SECTION_ID"],
+                            "SECTION_CODE" => "",
+                            "SECTION_URL" => "",
+                            "COUNT_ELEMENTS" => "Y",
+                            "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
+                            "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
+                            "TOP_DEPTH" => "2",
+                            "SECTION_FIELDS" => "",
+                            "SECTION_USER_FIELDS" => [
+                                "UF_BUTTONS_ACTIVITY"
+                            ],
+                            "ADD_SECTIONS_CHAIN" => "Y",
+                            "CACHE_TYPE" => "A",
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_NOTES" => "",
+                            "CACHE_GROUPS" => "Y"
+                        )
+                    );
+                    ?>
+                </div>
             </div>
-            <div class="news-content__listing" data-aos="fade-up"><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">выставки и конференции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">акции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">новости компании</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">выставки и конференции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">акции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">новости компании</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">выставки и конференции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">акции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">новости компании</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">выставки и конференции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">акции</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a><a class="news-card" href="#">
-                    <div class="news-card__top">
-                        <div class="news-card__plug">новости компании</div>
-                        <div class="news-card__bg">
-                            <picture class="picture">
-                                <source type="image/webp" srcset="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.webp"><img class="picture__img" src="<?=SITE_TEMPLATE_PATH?>/assets/images/main-news-card1.png">
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="news-card__bot">
-                        <div class="news-card__date">6 марта 2023</div>
-                        <div class="news-card__title">Диетолог Снегирева рассказала, как выбрать правильное мороженое</div>
-                    </div>
-                </a></div>
+
+
+
+            <?php
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "news_slider",
+                array(
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "AJAX_MODE" => "Y",
+                    "IBLOCK_TYPE" => "content",
+                    "IBLOCK_ID" => "9",
+                    "NEWS_COUNT" => "20",
+                    "SORT_BY1" => "SORT",
+                    "SORT_ORDER1" => "ASC",
+                    "FILTER_NAME" => "",
+                    "FIELD_CODE" => array(
+                        0 => "ID",
+                        1 => "NAME",
+                        2 => "PREVIEW_TEXT",
+                        3 => "PREVIEW_PICTURE",
+                        4 => "DETAIL_PICTURE",
+                        5 => "",
+                    ),
+                    "PROPERTY_CODE" => array(
+                        0 => "",
+                        1 => "LINK_SECTION_SLIDER",
+                        2 => "LABEL",
+                    ),
+                    "SECTION_ID" => $_REQUEST["SECTION_ID"],
+                    "SECTION_CODE" => "",
+                    "SECTION_URL" => "",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "SET_TITLE" => "Y",
+                    "SET_BROWSER_TITLE" => "Y",
+                    "SET_META_KEYWORDS" => "Y",
+                    "SET_META_DESCRIPTION" => "Y",
+                    "SET_LAST_MODIFIED" => "Y",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "3600",
+                    "CACHE_FILTER" => "Y",
+                    "CACHE_GROUPS" => "Y",
+                    "DISPLAY_TOP_PAGER" => "Y",
+                    "DISPLAY_BOTTOM_PAGER" => "Y",
+                    "PAGER_TITLE" => "Новости",
+                    "PAGER_SHOW_ALWAYS" => "Y",
+                    "PAGER_TEMPLATE" => "",
+                    "PAGER_DESC_NUMBERING" => "Y",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "Y",
+                    "PAGER_BASE_LINK_ENABLE" => "Y",
+                    "SET_STATUS_404" => "Y",
+                    "SHOW_404" => "Y",
+                    "MESSAGE_404" => "",
+                    "PAGER_BASE_LINK" => "",
+                    "PAGER_PARAMS_NAME" => "arrPager",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "COMPONENT_TEMPLATE" => "slider_main",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                    "FILE_404" => ""
+                ),
+                false
+            );?>
+
+
+
+
+
             <div class="news-content__more btn-hover_parent">
                 <div class="btn-hover_circle"></div><span>Показать еще</span>
             </div>
