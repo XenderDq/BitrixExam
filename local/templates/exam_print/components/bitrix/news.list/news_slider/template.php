@@ -2,13 +2,10 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-//echo '<pre>';
-//var_dump($arResult['ITEMS']);
-//echo '</pre>';
 ?>
 <div class="news-content__listing" data-aos="fade-up">
     <?php foreach ($arResult['ITEMS'] as $i => $item):?>
-    <a class="news-card" href="#">
+    <a class="news-card" href="<?=$item['DETAIL_PAGE_URL']?>">
         <div class="news-card__top">
             <div class="news-card__plug"><?=$item["IBLOCK_SECTION_ID"]?></div>
             <div class="news-card__bg">

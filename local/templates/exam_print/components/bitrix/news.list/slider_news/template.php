@@ -2,14 +2,11 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-//echo '<pre>';
-//var_dump($arResult);
-//echo '</pre>';
 ?>
     <div class="swiper main-news__swiper">
         <div class="swiper-wrapper">
     <?php foreach ($arResult['ITEMS'] as $i => $item):?>
-    <a class="swiper-slide main-news__card" href="#">
+    <a class="swiper-slide main-news__card" href="<?=$item['DETAIL_PAGE_URL']?>">
         <div class="main-news__card-img">
             <picture class="picture">
                 <source type="image/webp" srcset="<?=$item["PREVIEW_PICTURE"]['SRC']?>">
