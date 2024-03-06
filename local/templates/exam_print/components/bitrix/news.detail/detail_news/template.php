@@ -23,7 +23,7 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 </div>
 <div class="news-detail__time">
     <div class="news-detail__date"><?=$arResult["TIMESTAMP_X"]?></div>
-    <div class="news-detail__plug"><?=$arResult["IBLOCK"]["NAME"]?></div>
+    <div class="news-detail__plug"><?=$arResult["SECTION"]["PATH"][0]["NAME"]?></div>
 </div>
 <div class="title-rombs">
     <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
