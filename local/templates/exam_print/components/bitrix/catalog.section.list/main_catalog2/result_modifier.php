@@ -34,3 +34,11 @@
          $arResult['SECTIONS'][$i]['UF_PICTURE_FOR_MOBILE_VERSION'] = CFile::GetPath($value['UF_PICTURE_FOR_MOBILE_VERSION']);
      }
  }
+ foreach ($arResult['SECTIONS'] as $i => $value) {
+     if (!empty($value['IBLOCK_SECTION_ID'])) {
+         $rsEnum = CUserFieldEnum::GetList(array(), array("ID" => $value["IBLOCK_SECTION_ID"]));
+         $arEnum = $rsEnum->GetNext();
+
+     }
+
+ }

@@ -2,13 +2,10 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-//echo '<pre>';
-//var_dump($arResult);
-//echo '</pre>';
 ?>
 <div class="main-catalog__list container" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
-        <a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
+        <a class="main-catalog__item btn-hover_parent" href="<?=$item['SECTION_PAGE_URL']?>">
             <div class="main-catalog__item-bg desktop-only">
                 <picture class="picture">
                     <source type="image/webp" srcset="<?=$item['DETAIL_PICTURE']?>">
@@ -17,8 +14,8 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
             </div>
             <div class="main-catalog__item-bg mobile-only">
                 <picture class="picture">
-<!--                    <source type="image/webp" srcset="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
-<!--                    <img class="picture__img" src="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
+                    <!--<source type="image/webp" srcset="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
+                    <!--                    <img class="picture__img" src="--><?php //=$item['UF_PICTURE_FOR_MOBILE_VERSION']?><!--">-->
                 </picture>
             </div>
             <div class="main-catalog__item-row">
@@ -68,7 +65,6 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     <div class="main-catalog__item-title white"><?=$item["NAME"]?></div>
                 <?php endif?>
             </div>
-
             <div class="main-catalog__item-svg">
                 <div class="button button-arrow_right btn-hover_parent">
                     <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">

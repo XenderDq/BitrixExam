@@ -12,6 +12,5 @@ $arUrlRewrite = array(
         "PATH" => "/news/index.php",
         "SORT" => 100,
     ),
-
 );
 
