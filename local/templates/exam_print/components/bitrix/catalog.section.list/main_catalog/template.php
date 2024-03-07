@@ -2,10 +2,11 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 ?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>
-        <a class="main-catalog__item btn-hover_parent" href="https://www.google.com/">
+        <a class="main-catalog__item btn-hover_parent" href="<?=$item['SECTION_PAGE_URL']?>">
             <div class="main-catalog__item-bg desktop-only">
                 <picture class="picture">
                     <source type="image/webp" srcset="<?=$item["PICTURE"]["SRC"]?>">
