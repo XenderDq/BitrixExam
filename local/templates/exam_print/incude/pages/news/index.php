@@ -2,7 +2,6 @@
 if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     exit;
 }
-
 ?>
 <?php
     if ($_REQUEST['CODE']) :
@@ -67,6 +66,7 @@ if ( ! defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 )
                 );
              ?>
+
 
             </section>
 

@@ -15,6 +15,7 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         <div class="btn-hover_circle white"></div>
         <span><?=$item["NAME"]?></span>
     </a>
+
 <?php endforeach;?>
                 </div>
             </div>
