@@ -17,3 +17,4 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/app.css');
 //$APPLICATION->SetAdditionalCSS($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . "/app.css");
 
 ?>
+

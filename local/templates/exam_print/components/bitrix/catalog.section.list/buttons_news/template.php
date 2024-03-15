@@ -3,6 +3,7 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+
 ?>
             <div class="news-content__categories" data-aos="fade-up">
                 <div class="news-content__categories-wrapper">
@@ -15,7 +16,6 @@ if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         <div class="btn-hover_circle white"></div>
         <span><?=$item["NAME"]?></span>
     </a>
-
 <?php endforeach;?>
                 </div>
             </div>

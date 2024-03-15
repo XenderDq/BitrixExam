@@ -30,3 +30,10 @@ if ($arResult['SECTION']['PATH'][1]) {
 }
 
 
+$x = [];
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $arResult['x']["VALUE"]= $item['PROPERTIES']['CENNOST']['VALUE'];
+    $arResult['x']["DESCRIPTION"] = $item['PROPERTIES']['CENNOST']['VALUE'];
+
+}
+

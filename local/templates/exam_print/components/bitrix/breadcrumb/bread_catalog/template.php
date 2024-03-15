@@ -3,7 +3,9 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-
+echo '<pre>';
+var_dump($arResult);
+echo '</pre>';
 /**
  * @global CMain $APPLICATION
  */
@@ -19,16 +21,21 @@ if (!$arResult) {
     return $strReturn;
 }
 
+$xx = '';
+$xx = end($arResult);
+
 $strReturn .= '<div class="breadcrumbs-wrapper__row">';
 
 foreach ($arResult as $i => $item) {
-    if ($item["LINK"] == $curUrl) {
+
+    if ($item["LINK"] == $xx["LINK"]) {
         $strReturn .= '
 		<div class="breadcrumbs__current active">'
             .$item['TITLE'].'</div>
 									';
         break;
     }
+
     $strReturn .= '
         <a class="breadcrumbs__item" href="'.$item['LINK'].'">'.$item['TITLE'].'</a>
         <div class="breadcrumbs__arrow">
