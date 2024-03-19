@@ -3,7 +3,9 @@
 if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
     exit;
 }
-
+echo '<pre>';
+var_dump($_REQUEST["SECTION_CODE"]);
+echo '</pre>';
 ?>
     <section class="main-catalog container top-section" data-aos="fade-up" data-aos-duration="1500">
         <main class="main">
