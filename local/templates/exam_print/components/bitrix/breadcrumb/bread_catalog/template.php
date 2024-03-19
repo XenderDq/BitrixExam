@@ -3,14 +3,13 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-echo '<pre>';
-var_dump($arResult);
-echo '</pre>';
+
 /**
  * @global CMain $APPLICATION
  */
 
 global $APPLICATION;
+
 
 $strReturn = '';
 
@@ -23,6 +22,7 @@ if (!$arResult) {
 
 $xx = '';
 $xx = end($arResult);
+
 
 $strReturn .= '<div class="breadcrumbs-wrapper__row">';
 
@@ -46,7 +46,6 @@ foreach ($arResult as $i => $item) {
         </div>';
 }
 $strReturn .= '</div>';
-
 return $strReturn;
 
 

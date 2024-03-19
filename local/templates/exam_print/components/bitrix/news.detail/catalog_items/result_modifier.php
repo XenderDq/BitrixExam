@@ -1,39 +1,41 @@
 <?php
 
-$sectionsId = [];
-
-$rsSections = CIBlockSection::GetList(
+$arRes = CIBlockElement::GetList(
+    false,
     [
-        "ID" => "asc"
+        'ID' => $arResult['PROPERTIES']['NEXT_ELEMENT']['VALUE'],
+        'IBLOCK_ID' => 5,
     ],
+    false,
+    false,
     [
-        "SECTION_ID" => $arResult['SECTION']['PATH'][0]["ID"],
-        "ACTIVE" => 'Y',
-        "IBLOCK_ID" => 5,
-    ],
-    [
-        false
-    ],
-    [
-        "NAME",
-        "SECTION_PAGE_URL",
-        "CODE",
+        'NAME',
+        "PREVIEW_PICTURE",
+        'DETAIL_PAGE_URL'
     ]
 );
 
-while ($res = $rsSections->GetNext()) {
-    $arResult["SUB_SECTIONS"][]= $res;
+while ($res = $arRes->GetNext()) {
+    $res['PREVIEW_PICTURE'] = CFile::ResizeImageGet(
+        $res['PREVIEW_PICTURE'],
+        [
+            'width' => 362,
+            'height' => 362,
+        ]
+    )['src'];
+    $arResult["NEXT_ELEM"] = $res;
 }
 
-if ($arResult['SECTION']['PATH'][1]) {
-    $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
-}
 
 
-$x = [];
-foreach ($arResult['ITEMS'] as $i => $item) {
-    $arResult['x']["VALUE"]= $item['PROPERTIES']['CENNOST']['VALUE'];
-    $arResult['x']["DESCRIPTION"] = $item['PROPERTIES']['CENNOST']['VALUE'];
-
+$arRes1 = CIBlockElement::GetList(
+    false,
+    [
+        'ID' => $arResult['PROPERTIES']['BRANDS']['VALUE'],
+        'IBLOCK_ID' => 8,
+    ],
+);
+if ($res1 = $arRes1->GetNext()) {
+    $arResult['PROPERTIES']['BRANDS']['VALUE'] = $res1["NAME"];
 }
 

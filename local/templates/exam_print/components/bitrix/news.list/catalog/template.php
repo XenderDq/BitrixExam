@@ -27,6 +27,7 @@
 ?>
     <?php foreach ($arResult['ITEMS'] as $i => $item):?>
             <a class="catalog-card" href="<?= $item['DETAIL_PAGE_URL']?>">
+
                 <div class="catalog-card__icons">
                     <div class="catalog-card__icons-item">
                         <?php if ($item['PROPERTIES']['LABEL_CATALOG']['VALUE']=='T'):?>
@@ -72,6 +73,7 @@
                             </svg>
                         <?php endif;?>
                     </div>
+
                 </div>
                 <div class="catalog-card__inner">
                     <div class="catalog-card__top">

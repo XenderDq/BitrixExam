@@ -1,7 +1,9 @@
 <?php
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
+
     die();
+
 }
 
 /**
@@ -16,8 +18,10 @@ $curUrl = '';
 $curUrl = $APPLICATION->GetCurPage();
 
 if (!$arResult) {
+
     return $strReturn;
 }
+
 
 $strReturn .= '<div class="breadcrumbs-wrapper__row">';
 
@@ -41,7 +45,6 @@ foreach ($arResult as $i => $item) {
 $strReturn .= '</div>';
 
 return $strReturn;
-
 
 
 

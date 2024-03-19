@@ -49,6 +49,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                         <div class="main-slider__content-title" data-swiper-parallax="-1000"><?=$item["NAME"]?></div>
                         <div class="main-slider__content-desk" data-swiper-parallax="-2000"><?=$item["DETAIL_TEXT"]?></div>
                         <div class="main-slider__content-bot" data-swiper-parallax="-2500">
+
                             <?php
                             if (!empty($item["PROPERTIES"]["LINK_SECTION_SLIDER"]["VALUE"])): ?>
                                 <a class="main-slider__content-button btn-hover_parent" href="<?=$item["PROPERTIES"]["LINK_SECTION_SLIDER"]["VALUE"]?>">
@@ -82,7 +83,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
         </div>
     </div>
 </div>
-
 
 
 <div class="main-slider mobile-mob">
