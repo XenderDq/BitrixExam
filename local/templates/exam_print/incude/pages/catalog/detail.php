@@ -24,7 +24,6 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
      <div class="catalog-detail__inner">
          <div class="catalog-detail__col slider">
              <div class="recipes-detail__gallery">
-
                  <?php
                  $APPLICATION->IncludeComponent(
                      "bitrix:news.detail",

@@ -2,7 +2,6 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
-
 ?>
 <div class="catalog-detail__col slider">
     <div class="recipes-detail__gallery">
@@ -22,28 +21,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                 </div>
             </div>
         </div>
-
-
         <div class="recipes-detail__gallery-right">
-
-            <div class="recipes-detail__gallery-btns">
-
-                <div class="slider-btn btn-hover_parent recipes-detail__gallery-left-btn">
-                    <div class="white-circle">
-                        <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
-                            <path d="M16 10.8698L16 8.75515C16 6.47309 13.3808 5.18399 11.5725 6.57603L7.85123 9.44068C6.42121 10.5415 6.42121 12.6981 7.85124 13.7989L11.5725 16.6636C13.3808 18.0556 16 16.7665 16 14.4844L16 12.3698L16 10.8698Z" fill="#4F627D"></path>
-                        </svg>
-                    </div>
-                </div>
-                <div class="slider-btn btn-hover_parent recipes-detail__gallery-right-btn">
-                    <div class="white-circle right">
-                        <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
-                            <path d="M16 10.8698L16 8.75515C16 6.47309 13.3808 5.18399 11.5725 6.57603L7.85123 9.44068C6.42121 10.5415 6.42121 12.6981 7.85124 13.7989L11.5725 16.6636C13.3808 18.0556 16 16.7665 16 14.4844L16 12.3698L16 10.8698Z" fill="#4F627D"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper swiper-gallery-catalog">
+            <div class="catalog-card__icons">
                 <?php if ($arResult['PROPERTIES']['LABEL_CATALOG']['VALUE']=='T'):?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="70" viewBox="0 0 100 70" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M88.0226 26.7151C91.8593 23.4577 93.7641 20.2092 93.0947 17.3613C91.2302 9.42969 70.1042 7.60901 45.9085 13.2947C21.7129 18.9804 3.60983 30.0193 5.4743 37.9509C6.13886 40.778 9.25045 42.8287 14.0759 44.0399C10.2391 47.2974 8.33433 50.5459 9.00378 53.3938C10.8683 61.3254 31.9942 63.146 56.1899 57.4604C80.3856 51.7747 98.4886 40.7357 96.6241 32.8041C95.9596 29.977 92.848 27.9263 88.0226 26.7151Z" fill="#3FFFDC"></path>
@@ -86,8 +65,25 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                         <path d="M67.2875 22.8165L70.8807 21.8537L70.8963 21.9116L69.6832 36.3164L68.6786 36.5856L64.2231 31.8577C63.8843 31.5205 63.5889 31.1649 63.3368 30.7907C63.2952 31.2022 63.2171 31.6579 63.1026 32.1579L61.608 38.4802L60.6035 38.7493L52.3312 26.8861L52.3157 26.8282L55.9669 25.8498L59.098 30.5806C59.5695 31.3101 59.872 31.795 60.0054 32.0353C60.0725 31.41 60.1821 30.8147 60.3343 30.2494L61.4506 25.3743L62.2427 25.1621L65.6262 28.7486C66.107 29.2547 66.5125 29.712 66.8428 30.1205C66.8423 29.7065 66.8717 29.1465 66.9309 28.4404L67.2875 22.8165Z" fill="#03856D"></path>
                     </svg>
                 <?php endif;?>
+            </div>
+            <div class="recipes-detail__gallery-btns">
+                <div class="slider-btn btn-hover_parent recipes-detail__gallery-left-btn">
+                    <div class="white-circle">
+                        <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+                            <path d="M16 10.8698L16 8.75515C16 6.47309 13.3808 5.18399 11.5725 6.57603L7.85123 9.44068C6.42121 10.5415 6.42121 12.6981 7.85124 13.7989L11.5725 16.6636C13.3808 18.0556 16 16.7665 16 14.4844L16 12.3698L16 10.8698Z" fill="#4F627D"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="slider-btn btn-hover_parent recipes-detail__gallery-right-btn">
+                    <div class="white-circle right">
+                        <div class="btn-hover_circle total-white"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+                            <path d="M16 10.8698L16 8.75515C16 6.47309 13.3808 5.18399 11.5725 6.57603L7.85123 9.44068C6.42121 10.5415 6.42121 12.6981 7.85124 13.7989L11.5725 16.6636C13.3808 18.0556 16 16.7665 16 14.4844L16 12.3698L16 10.8698Z" fill="#4F627D"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper swiper-gallery-catalog">
                 <div class="swiper-wrapper">
-
                     <?php foreach ($arResult['PROPERTIES']['GALEREYA']["VALUE"] as $i => $item):?>
                     <div class="swiper-slide">
                         <div class="catalog-detail__img">
@@ -101,8 +97,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 <div class="overlay"></div>

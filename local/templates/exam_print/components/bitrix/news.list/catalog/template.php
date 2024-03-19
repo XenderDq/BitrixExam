@@ -3,7 +3,9 @@
     if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         die();
     }
+
 ?>
+
 <div class="catalog-hero__thumbs">
 <div class="news-content__categories" data-aos="fade-up">
     <div class="news-content__categories-wrapper">
@@ -92,7 +94,7 @@
                                         <path d="M4.58505 10.9704C5.00547 9.17667 5.21568 8.27978 5.71035 7.61412C6.12854 7.0514 6.68728 6.60847 7.33058 6.32973C8.09156 6 9.01275 6 10.8551 6H13.1449C14.9872 6 15.9084 6 16.6694 6.32973C17.3127 6.60847 17.8715 7.0514 18.2896 7.61412C18.7843 8.27978 18.9945 9.17667 19.4149 10.9704L20.1462 14.0905C20.7859 16.8199 21.1058 18.1846 20.7522 19.2548C20.4553 20.1533 19.8496 20.9175 19.0425 21.4115C18.0812 22 16.6795 22 13.8761 22H10.1239C7.32049 22 5.91879 22 4.9575 21.4115C4.15044 20.9175 3.54466 20.1533 3.24781 19.2548C2.89423 18.1846 3.21409 16.8199 3.8538 14.0904L4.58505 10.9704Z" fill="#0068FF"></path>
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.5C12.8284 6.5 13.5 5.82843 13.5 5C13.5 4.17157 12.8284 3.5 12 3.5C11.1716 3.5 10.5 4.17157 10.5 5C10.5 5.82843 11.1716 6.5 12 6.5ZM12 8C13.6569 8 15 6.65685 15 5C15 3.34315 13.6569 2 12 2C10.3431 2 9 3.34315 9 5C9 6.65685 10.3431 8 12 8Z" fill="#0068FF"></path>
                                     </svg></div>
-                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['VES']['VALUE']?> г</div>
+                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['VES']['VALUE']?> <?=$item['PROPERTIES']['VES']['DESCRIPTION']?></div>
                                 <div class="catalog-card__plug-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                         <rect x="0.5" y="0.5" width="23" height="23" rx="5.5" fill="white"></rect>
                                         <path d="M12.75 11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11Z" fill="#0068FF"></path>
@@ -107,7 +109,7 @@
                                         <path d="M12 21.61V12.54" stroke="#EAF3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         <path d="M16.9998 13.2401V9.58014L7.50977 4.1001" stroke="#EAF3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg></div>
-                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['COUNT_IN_BOX']['VALUE']?> шт</div>
+                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['COUNT_IN_BOX']['VALUE']?> <?=$item['PROPERTIES']['COUNT_IN_BOX']['DESCRIPTION']?></div>
                                 <div class="catalog-card__plug-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                         <rect x="0.5" y="0.5" width="23" height="23" rx="5.5" fill="white"></rect>
                                         <path d="M12.75 11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11Z" fill="#0068FF"></path>
@@ -132,7 +134,7 @@
                                             </clippath>
                                         </defs>
                                     </svg></div>
-                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['PALLET']['VALUE']?> шт</div>
+                                <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['PALLET']['VALUE']?> <?=$item['PROPERTIES']['PALLET']['DESCRIPTION']?></div>
                                 <div class="catalog-card__plug-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                         <rect x="0.5" y="0.5" width="23" height="23" rx="5.5" fill="white"></rect>
                                         <path d="M12.75 11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11Z" fill="#0068FF"></path>
