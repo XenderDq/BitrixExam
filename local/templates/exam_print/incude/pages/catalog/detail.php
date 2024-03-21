@@ -4,6 +4,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
     exit;
 }
 ?>
+
  <div class="popup-video" data-popup-fade="recipec-video">
      <div class="popup-video__close" data-fade-close="main-video">
          <div class="btn-hover_parent">

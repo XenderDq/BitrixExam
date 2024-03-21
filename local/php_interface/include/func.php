@@ -8,6 +8,9 @@ use Bitrix\Main\Server;
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
 $requestUri = $request->getRequestUri();
+$values = $request->getQueryList()->toArray();
+
+
 
 $urls_pieces = explode("/", $requestUri);
 $clear_url = [];
@@ -16,6 +19,7 @@ foreach ($urls_pieces as $i => $item) {
         $clear_url[] = $item;
     }
 }
+
 
 
 
