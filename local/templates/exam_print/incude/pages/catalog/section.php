@@ -1,11 +1,21 @@
 <?php
-
 if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
     exit;
 }
-
 global $arFilter;
-$arFilter = [];
+$arFilter = [
+    'PROPERTY_ZHIR' => $_GET['ZHIR'],
+    "PROPERTY_BRANDS" => $_GET['BRANDS']
+];
+if (isset($_GET["CATALOG_LABEL"])) {
+    $arFilter["PROPERTY_LABEL_CATALOG_VALUE"] = "Y";
+}
+$SORT_BY1 = "ACTIVE_FROM";
+if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала новинки') {
+            $SORT_BY1 = "CREATED";
+} if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала популярные') {
+            $SORT_BY1 = "SHOW_COUNTER";
+}
 ?>
     <section class="main-catalog container top-section" data-aos="fade-up" data-aos-duration="1500">
         <main class="main">
@@ -36,7 +46,8 @@ $arFilter = [];
                     [
                         "FILTER_CODES" => [
                             "BRANDS",
-                            "ZHIR"
+                            "ZHIR",
+                            "BRANDS"
                         ],
                         "PARENT_SECTION_CODE" => $clear_url[1],
                         "DISPLAY_DATE" => "Y",
@@ -47,8 +58,8 @@ $arFilter = [];
                         "IBLOCK_TYPE" => "content",
                         "IBLOCK_ID" => "5",
                         "NEWS_COUNT" => "20",
-                        "SORT_BY1" => "SORT",
-                        "SORT_ORDER1" => "ASC",
+                        "SORT_BY1" => $SORT_BY1,
+                        "SORT_ORDER1" => "desc",
                         "FILTER_NAME" => "arFilter",
                         "FIELD_CODE" => array(
                             0 => "ID",
@@ -56,7 +67,7 @@ $arFilter = [];
                             2 => "PREVIEW_TEXT",
                             3 => "PREVIEW_PICTURE",
                             4 => "DETAIL_PICTURE",
-                            5 => "",
+                            5 => "SHOW_COUNTER",
                         ),
                         "PROPERTY_CODE" => array(
                             0 => "",

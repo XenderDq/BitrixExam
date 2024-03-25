@@ -59,76 +59,105 @@ $rsSections23 = CIBlockElement::GetList(
 
 while ($res23 = $rsSections23->GetNext()) {
     $arResult["ZHIR"][] = $res23["PROPERTY_ZHIR_VALUE"];
-}
 
-$rsSections1 = CIBlockElement::GetList(
-    false,
-    [
-        "IBLOCK_ID" => 8,
-    ],
-);
+}
 
 $arRes2 = CIBlockElement::GetList(
     false,
     [
-        'ID' => $arResult['PROPERTIES']['BRANDS']['VALUE'],
         'IBLOCK_ID' => 8,
     ],
 );
 
 while ($res2 = $arRes2->GetNext()) {
-    $arResult["BRAND"][] = $res2["NAME"];
+    $arResult["BRAND"]["NAME"][] = $res2["NAME"];
+    $arResult["BRAND"]["ID"][] = $res2["ID"];
 }
 
-foreach ($arResult['ITEMS'] as $i => $item) {
-    $arResult['ITEMS'][$i]['PROPERTIES']['BRANDS']['VALUE'] = $arResult["BRAND"][$i];
-}
 
 $arResult["SECTION_NAME_PATH"] = end($arResult['SECTION']['PATH']);
 
-if (isset($_GET['top1'])) {
-    $arResult["FILTERED"][] = $_GET['top1'];
+if (isset($_GET['BRANDS'])) {
+    foreach ($arResult["BRAND"]["ID"] as $i => $item) {
+        if ($item == $_GET['BRANDS']) {
+            $arRes2 = CIBlockElement::GetList(
+                false,
+                [
+                    'IBLOCK_ID' => 8,
+                ],
+            );
+            while($res2 = $arRes2->GetNext()) {
+                $arResult["FILTERED"]["NAME"][] = $res2["NAME"];
+            }
+        }
+    }
+    foreach ($arResult["BRAND"]["ID"] as $i => $item) {
+        if ($item == $_GET['BRANDS']) {
+            $arResult["FILTERED"][] = $arResult["FILTERED"]['NAME'][$i];
+        }
+    }
 } else {
     $arResult["FILTERED"][] = 0;
-} if (isset($_GET['top2'])) {
-    $arResult["FILTERED"][] = $_GET['top2'];
+} if (isset($_GET['ZHIR'])) {
+    $arResult["FILTERED"][] = $_GET['ZHIR'];
 } else {
     $arResult["FILTERED"][] = 0;
-} if (isset($_GET['top'])) {
+} if (isset($_GET['CATALOG_LABEL'])) {
     $arResult["FILTERED"][] = "Y";
 } else {
     $arResult["FILTERED"][] = 0;
+}if (isset($_GET['Sorting'])) {
+    $arResult["FILTERED"][] = $_GET['top3'];
+} else {
+    $arResult["FILTERED"][] = 0;
 }
-
-$arFilter = $arResult["FILTERED"];
 
 $t = [];
 
-if ($arResult["FILTERED"][1] != 0) {
-    foreach($arResult['ITEMS'] as $i => $item) {
-        if ($item['PROPERTIES']['ZHIR']['VALUE'] == $arResult["FILTERED"][1]) {
-            $t[] = $item;
-        }
-    }
+//if ($arResult["FILTERED"][1] != 0) {
+//    foreach($arResult['ITEMS'] as $i => $item) {
+//        if ($item['PROPERTIES']['ZHIR']['VALUE'] == $arResult["FILTERED"][1]) {
+//            $t[] = $item;
+//        }
+//    }
+//}
+//
+//if ($arResult["FILTERED"][0] != 0) {
+//    foreach($arResult['ITEMS'] as $i => $item) {
+//        if ($item['PROPERTIES']['BRANDS']['VALUE'] == $arResult["FILTERED"][0]) {
+//            $t[] = $item;
+//        }
+//    }
+//}
+//
+//if ($arResult["FILTERED"][2] != 0) {
+//    foreach($arResult['ITEMS'] as $i => $item) {
+//        if ($item['PROPERTIES']['LABEL_CATALOG']['VALUE'] == $arResult["FILTERED"][2]) {
+//            $t[] = $item;
+//        }
+//    }
+//}
+
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $arrayOfCount [] = $item['SHOW_COUNTER'];
 }
 
-if ($arResult["FILTERED"][0] != 0) {
-    foreach($arResult['ITEMS'] as $i => $item) {
-        if ($item['PROPERTIES']['BRANDS']['VALUE'] == $arResult["FILTERED"][0]) {
-            $t[] = $item;
-        }
-    }
-}
+//rsort($arrayOfCount);
+//$ppp = count($arrayOfCount);
+//$uniqueArr = array_unique($arrayOfCount);
+//if ($arResult["FILTERED"][3] != 0) {
+//    for ($i = 0; $i < $ppp; $i++) {
+//        foreach ($arResult['ITEMS'] as $j => $item) {
+//            if ($uniqueArr[$i] == $item["SHOW_COUNTER"]) {
+//                $t[] = $item["SHOW_COUNTER"];
+//            }
+//        }
+//    }
+//}
 
-if ($arResult["FILTERED"][2] != 0) {
-    foreach($arResult['ITEMS'] as $i => $item) {
-        if ($item['PROPERTIES']['LABEL_CATALOG']['VALUE'] == $arResult["FILTERED"][2]) {
-            $t[] = $item;
-        }
-    }
-}
-
-$arResult["ONE"] = $t;
+//
+//$arResult["ONE"] = $t;
+//$_GET['top3'] = $arResult["ONE"];
 
 
 
@@ -147,3 +176,9 @@ if ($b == "?") {
 }
 
 $arResult["URLURLURL"] = implode("/",$new_array1);
+$arrayOfCount = [];
+
+
+
+
+
