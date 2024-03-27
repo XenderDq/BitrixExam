@@ -2,20 +2,28 @@
 if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
     exit;
 }
+use Bitrix\Main\Application;
+use Bitrix\Main\Web\Cookie;
 global $arFilter;
 $arFilter = [
     'PROPERTY_ZHIR' => $_GET['ZHIR'],
-    "PROPERTY_BRANDS" => $_GET['BRANDS']
+    "PROPERTY_BRANDS" => $_GET['BRANDS'],
+    "PROPERTY_LABEL_CATALOG_VALUE" => $_GET["CATALOG_LABEL"]
 ];
-if (isset($_GET["CATALOG_LABEL"])) {
-    $arFilter["PROPERTY_LABEL_CATALOG_VALUE"] = "Y";
-}
-$SORT_BY1 = "ACTIVE_FROM";
+
+
+$SORT_BY1 = "CREATED";
 if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала новинки') {
             $SORT_BY1 = "CREATED";
+            $cookie = new Cookie($SORT_BY1, 'Сначала новинки');
+    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
+
 } if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала популярные') {
             $SORT_BY1 = "SHOW_COUNTER";
+    $cookie = new Cookie($SORT_BY1, "Сначала популярные");
+    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
+
 ?>
     <section class="main-catalog container top-section" data-aos="fade-up" data-aos-duration="1500">
         <main class="main">
@@ -135,5 +143,10 @@ if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала новинки'
             </section>
         </main>
     </section>
+<script>
 
+
+
+
+</script>
 
