@@ -143,10 +143,4 @@ if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала новинки'
             </section>
         </main>
     </section>
-<script>
-
-
-
-
-</script>
 

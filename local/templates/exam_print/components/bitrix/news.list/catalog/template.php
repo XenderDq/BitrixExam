@@ -4,9 +4,6 @@
         die();
     }
 
-//echo '<pre>';
-//var_dump($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH);
-//echo '</pre>';
 ?>
 <!--<script src = "--><?php //$_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH ?><!-- /components//index1.js"></script>-->
 <!--            <div class="popup-filters mobile" data-popup-wrapper="catalog-filters" data-overlay-on>-->
@@ -71,10 +68,8 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-
-
 <div class="catalog-hero__top">
-    <h1 class="catalog-hero__title"><?=$arResult["SECTION_NAME_PATH"]["NAME"]?></h1>
+    <h1 class="catalog-hero__title"><?=$arResult["CURRENT_SECTION"]["NAME"]?></h1>
     <div class="title-rombs">
         <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
                 <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
@@ -93,12 +88,12 @@
 <div class="catalog-hero__thumbs">
 <div class="news-content__categories" data-aos="fade-up">
     <div class="news-content__categories-wrapper">
-        <a class="catalog-hero__thumbs-item btn-hover_parent <?php if (!$arResult['CURRENT_SECTION']) : ?> active<?php endif;?>" href ="<?=$arResult['SECTION']['PATH'][0]['SECTION_PAGE_URL']?>">
+        <a class="catalog-hero__thumbs-item btn-hover_parent <?php if ($arResult['CURRENT_SECTION']["CODE"] == $arResult['SECTION']['PATH'][0]['CODE']): ?> active<?php endif;?>" href ="<?=$arResult['SECTION']['PATH'][0]['SECTION_PAGE_URL']?>">
             <div class="btn-hover_circle white"></div>
         <span>Все</span>
         </a>
         <?php foreach ($arResult['SUB_SECTIONS'] as $i => $item):?>
-            <a class="catalog-hero__thumbs-item btn-hover_parent <?php if ($arResult['CURRENT_SECTION'] == $item['CODE']) : ?> active<?php endif;?>" href ="<?=$item["SECTION_PAGE_URL"];?>">
+            <a class="catalog-hero__thumbs-item btn-hover_parent <?php if ($arResult['CURRENT_SECTION']['CODE'] == $item['CODE']) : ?> active<?php endif;?>" href ="<?=$item["SECTION_PAGE_URL"];?>">
                 <div class="btn-hover_circle"></div>
                 <span>
                     <?=$item["NAME"];?>
@@ -108,10 +103,10 @@
     </div>
 </div>
 </div>
-    <form  method="get" id = "myForm">
+    <form  method="get" id="myForm">
       <div class="catalog-hero__activity" data-aos="fade-up">
-            <label class="catalog-hero__tops desktop" for="CATALOG_LABEL" id="CATALOG_LABEL">
-                <input data-privet class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" <?php if (isset ($_GET["CATALOG_LABEL"])):?> checked <?php endif;?>name="CATALOG_LABEL" value="Y" onchange="document.getElementById('myForm').submit()">
+            <label class="catalog-hero__tops desktop" for="CATALOG_LABEL" id="CATALOG_LABEL" >
+                <input data-privet class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" <?php if (isset ($_GET["CATALOG_LABEL"])):?> checked <?php endif;?>name="CATALOG_LABEL" value="Y" >
                 <div class="catalog-hero__tops-box">
                     <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10" fill="none">
                         <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -133,8 +128,8 @@
                         <div class="select">
                                 <select class="select__select" style="width: 100%" data-select-placeholder="Брэнды" name="BRANDS" id="BRANDS" onchange="document.getElementById('myForm').submit()">
                                     <option value="" selected="selected" disabled="disabled"></option>
-                                    <?php foreach($arResult["BRAND"]["ID"] as $i => $id) : ?>
-                                    <option value="<?=$id?>" <?php if ($_GET["BRANDS"] == $id):?> selected="selected" <?php endif;?>><?= $arResult["BRAND"]["NAME"][$i] ?></option>
+                                    <?php foreach($arResult['BRAND'] as $key => $item) : ?>
+                                    <option value="<?=$item['ID']?>" <?php if ($_GET["BRANDS"] == $item['ID']):?> selected="selected" <?php endif;?>><?= $item['NAME']?></option>
                                     <?php endforeach; ?>
                                 </select>
                         </div>
@@ -145,9 +140,11 @@
                         <div class="select">
                                 <select class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="ZHIR" id="ZHIR" onchange="document.getElementById('myForm').submit()">
                                     <option value="" selected="selected" disabled="disabled"></option>
+
                                     <?php foreach($arResult["ZHIR"] as $i => $item):?>
                                         <option <?php if ($_GET["ZHIR"] == $item):?> selected="selected" <?php endif;?>><?=$item?> </option>
                                     <?php endforeach;?>
+
                                 </select>
                         </div>
                     </div>
@@ -181,9 +178,8 @@
                     <path d="M4.01269 1.00335C4.01454 0.589137 3.68025 0.251856 3.26604 0.250008C2.85183 0.24816 2.51455 0.582445 2.5127 0.996654L2.50365 3.02568C2.50026 3.78054 2.49744 4.41017 2.55271 4.91635C2.61069 5.44728 2.74029 5.93661 3.06926 6.36169C3.15834 6.4768 3.25638 6.58449 3.36242 6.68379C3.42487 6.74227 3.49008 6.79784 3.55786 6.85029C3.98294 7.17926 4.47227 7.30886 5.0032 7.36684C5.50939 7.42211 6.13896 7.41929 6.89383 7.4159H6.89384L8.9229 7.40685C9.3371 7.405 9.67139 7.06772 9.66954 6.65351C9.66769 6.2393 9.33041 5.90501 8.9162 5.90686L6.93049 5.91572C6.12107 5.91933 5.57738 5.92062 5.16604 5.8757C5.13511 5.87232 5.10551 5.86873 5.07717 5.86494C5.49067 5.39871 5.95055 4.97451 6.44953 4.59962C7.99559 3.43804 9.91636 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 11.5858 2.41421 11.25 2 11.25C1.58579 11.25 1.25 11.5858 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25C9.58034 1.25 7.34544 2.05032 5.54852 3.40038C5.00526 3.80854 4.50198 4.26696 4.04555 4.76877L4.04385 4.75351C3.99893 4.34217 4.00022 3.79848 4.00383 2.98906L4.01269 1.00335Z" fill="#0068FF"></path>
                 </svg>
             </div>
-            <a class="catalog-hero__reset-text" type="reset"  href="http://192.168.50.241/<?=$arResult["URLURLURL"]?>/">Сбросить</a>
+            <a class="catalog-hero__reset-text" type="reset"  href="<?=$arResult['CURRENT_SECTION']['SECTION_PAGE_URL']?>">Сбросить</a>
         </div>
-        <input type="submit" value="Применить">
     </div>
     </form>
 <?php
@@ -312,29 +308,6 @@
     <?php
     $this->EndViewTarget();
     ?>
-<script>
-
-    // document.addEventListener("DOMContentLoaded", function (e) {
-    //     let submitted = false;
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     const param = urlParams.get('BRANDS');
-    //     let form = document.getElementById('myForm');
-    //     let  formData = {};
-    //     for (let i = 0; i < form.elements.length; i++) {
-    //         let element = form.elements[i];
-    //         if (element.tagName === 'SELECT' || element.tagName === "INPUT") {
-    //             formData[element.name] = element.value;
-    //         }
-    //     }
-    //     if(formData.BRANDS === param && !submitted) {
-    //         console.log('work')
-    //         submitted = true;
-    //         // form.submit();
-    //     }
-    // });
-
-</script>
-
 
 
 

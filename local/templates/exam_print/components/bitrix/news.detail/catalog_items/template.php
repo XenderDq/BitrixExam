@@ -197,31 +197,66 @@
                 <div class="catalog-detail__form" data-aos="fade-up">
                     <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
                     <div class="catalog-detail__form-content">
-                        <form class="partners-requisites__form" data-form="catalog-detail">
+                        <form class="partners-requisites__form" data-form="catalog-detail" >
                             <div class="partners-requisites__form-top">
                                 <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">Имя</div><input class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя">
+                                    <div class="input-wrapper__placeholder">Имя</div>
+                                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" >
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">Телефон</div><input class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="">
+                                    <div class="input-wrapper__placeholder">Телефон</div>
+                                    <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" >
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">E-mail</div><input class="input" data-input="" required type="email" placeholder="E-mail">
+                                    <div class="input-wrapper__placeholder">E-mail</div>
+                                    <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" >
                                 </div>
                             </div>
                             <div class="partners-requisites__form-area">
                                 <div class="input-wrapper input-wrapper_textarea" data-input-parent="">
-                                    <div class="input-wrapper__placeholder placeholder_background">Комментраий к заявке</div><textarea class="textarea" data-input="" type="text" placeholder="Комментраий к заявке"></textarea>
+                                    <div class="input-wrapper__placeholder placeholder_background">Комментарий к заявке</div>
+                                    <input name = "Comments" class="textarea" data-input="" type="text" placeholder="Комментраий к заявке" >
                                 </div>
                             </div>
                             <div class="partners-requisites__form-bot">
-                                <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с<a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a></div><button class="partners-requisites__form-btn btn-hover_parent" type="submit">
-                                    <div class="btn-hover_circle"></div><span>Отправить</span>
+                                <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с
+                                    <a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a>
+                                </div>
+                                <button class="partners-requisites__form-btn btn-hover_parent" type="submit">
+                                    <div class="btn-hover_circle"></div>
+                                    <span>Отправить</span>
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
+                <script>
+                    document.querySelector('.partners-requisites__form').addEventListener('submit', function(event) {
+                        event.preventDefault();
+
+                        let formData = new FormData(this);
+                        let convertedData = {};
+                        for (const [key, value] of formData.entries()) {
+                            convertedData[key] = value;
+                        }
+                        let jsonData = JSON.stringify(convertedData);
+                        let xhr = new XMLHttpRequest();
+                        xhr.open('POST', '/local/templates/exam_print/assets/ajax/catalog/requests_and_questions.php', true);
+
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+
+
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                console.log(jsonData);
+                            } else {
+                                console.log('Произошла ошибка при отправке формы: ' + xhr.status);
+                            }
+                        };
+                        xhr.send(jsonData);
+                    });
+                </script>
+
                 <a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult["NEXT_ELEM"]["DETAIL_PAGE_URL"]?>">
                     <div class="catalog-detail__rect-circle">
                         <div class="catalog-hero__rec-circle">
@@ -274,3 +309,6 @@
         </div>
     </div>
     <div class="overlay"></div>
+
+
+
