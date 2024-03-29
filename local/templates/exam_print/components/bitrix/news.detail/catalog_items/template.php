@@ -6,7 +6,6 @@
 $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 ?>
-<?=bitrix_sessid_post()?>
 <div class="catalog-detail__breadcrumbs mobile">
     <div class="breadcrumbs">
         <div class="breadcrumbs-wrapper">
@@ -197,6 +196,8 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                         </div>
                     </div>
                 </div>
+
+                <?=bitrix_sessid_post()?>
                 <div class="catalog-detail__form" data-aos="fade-up">
                     <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
                     <div class="catalog-detail__form-content">
