@@ -9,7 +9,6 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/app.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/index1.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/catalog_detail_input_requests.js');
 
-
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/590.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/app.css');
 

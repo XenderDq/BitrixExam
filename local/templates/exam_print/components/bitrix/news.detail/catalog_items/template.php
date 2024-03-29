@@ -3,7 +3,10 @@
     if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         die();
     }
+$current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
 ?>
+<?=bitrix_sessid_post()?>
 <div class="catalog-detail__breadcrumbs mobile">
     <div class="breadcrumbs">
         <div class="breadcrumbs-wrapper">
@@ -197,19 +200,19 @@
                 <div class="catalog-detail__form" data-aos="fade-up">
                     <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
                     <div class="catalog-detail__form-content">
-                        <form class="partners-requisites__form" data-form="catalog-detail" >
+                        <form class="partners-requisites__form" data-form="catalog-detail" methot ="POST">
                             <div class="partners-requisites__form-top">
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">Имя</div>
-                                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" >
+                                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" id ="NameID">
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">Телефон</div>
-                                    <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" >
+                                    <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" id = "PhoneID">
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">E-mail</div>
-                                    <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" >
+                                    <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" id = "EmailID">
                                 </div>
                             </div>
                             <div class="partners-requisites__form-area">
@@ -226,36 +229,12 @@
                                     <div class="btn-hover_circle"></div>
                                     <span>Отправить</span>
                                 </button>
+                                <input type="hidden" name="user_i3" value="<?=$current_url?>">
+                                <input type="hidden" name="user_i32" value="<?=$arResult["NAME"]?>">
                             </div>
                         </form>
                     </div>
                 </div>
-                <script>
-                    document.querySelector('.partners-requisites__form').addEventListener('submit', function(event) {
-                        event.preventDefault();
-
-                        let formData = new FormData(this);
-                        let convertedData = {};
-                        for (const [key, value] of formData.entries()) {
-                            convertedData[key] = value;
-                        }
-                        let jsonData = JSON.stringify(convertedData);
-                        let xhr = new XMLHttpRequest();
-                        xhr.open('POST', '/local/templates/exam_print/assets/ajax/catalog/requests_and_questions.php', true);
-
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-
-
-                        xhr.onload = function() {
-                            if (xhr.status === 200) {
-                                console.log(jsonData);
-                            } else {
-                                console.log('Произошла ошибка при отправке формы: ' + xhr.status);
-                            }
-                        };
-                        xhr.send(jsonData);
-                    });
-                </script>
 
                 <a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult["NEXT_ELEM"]["DETAIL_PAGE_URL"]?>">
                     <div class="catalog-detail__rect-circle">

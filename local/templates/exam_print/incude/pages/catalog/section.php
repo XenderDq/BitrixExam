@@ -11,7 +11,6 @@ $arFilter = [
     "PROPERTY_LABEL_CATALOG_VALUE" => $_GET["CATALOG_LABEL"]
 ];
 
-
 $SORT_BY1 = "CREATED";
 if (isset($_GET["Sorting"])&&$_GET["Sorting"] == 'Сначала новинки') {
             $SORT_BY1 = "CREATED";
