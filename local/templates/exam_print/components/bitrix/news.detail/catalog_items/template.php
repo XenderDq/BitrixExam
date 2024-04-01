@@ -6,23 +6,7 @@
 $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 ?>
-<div class="catalog-detail__breadcrumbs mobile">
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-wrapper">
-            <?php
-            $APPLICATION->IncludeComponent(
-                "bitrix:breadcrumb",
-                "bread_catalog",
-                [
-                    "START_FROM" => "0",
-                    "PATH" => "",
-                    "SITE_ID" => "s1",
-                ]
-            );
-            ?>
-        </div>
-    </div>
-</div>
+
 <span class="catalog-detail__brandmark"><?= $arResult['PROPERTIES']['BRANDS']['VALUE'] ?></span>
             <div class="catalog-detail__col info" data-aos="fade-up">
                 <div class="catalog-detail__title"><?=$arResult["NAME"]?></div>
@@ -197,11 +181,12 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                     </div>
                 </div>
 
-                <?=bitrix_sessid_post()?>
+
                 <div class="catalog-detail__form" data-aos="fade-up">
                     <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
                     <div class="catalog-detail__form-content">
-                        <form class="partners-requisites__form" data-form="catalog-detail" methot ="POST">
+                        <form class="partners-requisites__form" data-form="catalog-detail" method ="POST">
+                            <?=bitrix_sessid_post()?>
                             <div class="partners-requisites__form-top">
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">Имя</div>
@@ -209,11 +194,11 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">Телефон</div>
-                                    <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" id = "PhoneID">
+                                    <input name = "Phone" class="input" data-input="" required type="tel"  placeholder="Телефон" data-mask-phone="" id = "PhoneID">
                                 </div>
                                 <div class="input-wrapper" data-input-parent="">
                                     <div class="input-wrapper__placeholder">E-mail</div>
-                                    <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" id = "EmailID">
+                                    <input name = "Email" class="input" data-input="" required type="email" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"  placeholder="E-mail" id = "EmailID">
                                 </div>
                             </div>
                             <div class="partners-requisites__form-area">
@@ -230,13 +215,13 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                                     <div class="btn-hover_circle"></div>
                                     <span>Отправить</span>
                                 </button>
-                                <input type="hidden" name="user_i3" value="<?=$current_url?>">
-                                <input type="hidden" name="user_i32" value="<?=$arResult["NAME"]?>">
+                                <input type="hidden" name="Full_url" value="<?=$current_url?>">
+                                <input type="hidden" name="Url_of_elem" value="<?=$arResult["DETAIL_PAGE_URL"]?>">
+                                <input type="hidden" name="Name_of_elem" value="<?=$arResult["NAME"]?>">
                             </div>
                         </form>
                     </div>
                 </div>
-
                 <a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult["NEXT_ELEM"]["DETAIL_PAGE_URL"]?>">
                     <div class="catalog-detail__rect-circle">
                         <div class="catalog-hero__rec-circle">

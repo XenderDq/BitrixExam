@@ -12,9 +12,7 @@ header('Content-Type: application/json; windows-1251');
 
 Loader::includeModule('iblock');
 
-
 $jsonData = file_get_contents('php://input');
-json_decode($jsonData);
 $jsonData = htmlspecialchars($jsonData);
 
 $el = new CIBlockElement;

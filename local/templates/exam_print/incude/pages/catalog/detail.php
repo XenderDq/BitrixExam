@@ -89,9 +89,24 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true){
                  ?>
              </div>
          </div>
-
-
          <div class="catalog-detail__col info" data-aos="fade-up">
+             <div class="catalog-detail__breadcrumbs mobile">
+                 <div class="breadcrumbs">
+                     <div class="breadcrumbs-wrapper">
+                                     <?php
+                                     $APPLICATION->IncludeComponent(
+                                         "bitrix:breadcrumb",
+                                         "bread_catalog",
+                                         [
+                                             "START_FROM" => "0",
+                                             "PATH" => "",
+                                             "SITE_ID" => "s1",
+                                         ]
+                                     );
+                                     ?>
+                     </div>
+                 </div>
+             </div>
              <div class="catalog-detail__breadcrumbs desktop">
                  <div class="breadcrumbs">
                      <div class="breadcrumbs-wrapper">
