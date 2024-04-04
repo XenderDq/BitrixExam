@@ -32,13 +32,13 @@ if (!empty($errors)) {
 
 $el = new CIBlockElement;
 
-$arLoadProductArray = array(
-    "IBLOCK_ID"         => 9,
+$questions_record = array(
+    "IBLOCK_ID" => 9,
     "NAME" => "Данные_из_формы_обращения",
-    "PREVIEW_TEXT"      => $jsonData1,
+    "PREVIEW_TEXT" => $jsonData1,
 );
 
-if ($PRODUCT_ID = $el->Add($arLoadProductArray)) {
+if ($PRODUCT_ID = $el->Add($questions_record)) {
     echo "New ID: ".$PRODUCT_ID;
 } else {
     echo "Error: ".$el->LAST_ERROR;

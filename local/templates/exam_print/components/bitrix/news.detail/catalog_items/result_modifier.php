@@ -25,9 +25,6 @@ while ($res = $arRes->GetNext()) {
     )['src'];
     $arResult["NEXT_ELEM"] = $res;
 }
-
-
-
 $arRes1 = CIBlockElement::GetList(
     false,
     [
