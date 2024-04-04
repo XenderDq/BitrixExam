@@ -99,4 +99,3 @@ while ($arData = $rsData->GetNext()) {
 }
 }
 
-

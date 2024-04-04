@@ -9,7 +9,7 @@ $dir = $APPLICATION->GetCurDir();
 $a =[];
 $a = explode("/",$dir);
 foreach($a as $element) {
-    if(!empty($element)){
+    if(!empty($element)) {
         $new_array[] = $element;
     }
 }
