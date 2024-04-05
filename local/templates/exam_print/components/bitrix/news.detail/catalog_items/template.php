@@ -3,10 +3,53 @@
     if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         die();
     }
-$current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
 ?>
-
+<?php
+$this->SetViewTarget('form');
+?>
+<div class="catalog-detail__form" data-aos="fade-up">
+    <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
+    <div class="catalog-detail__form-content">
+        <form class="partners-requisites__form" data-form="catalog-detail" method ="POST" js-form>
+            <?=bitrix_sessid_post()?>
+            <div class="partners-requisites__form-top">
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">Имя</div>
+                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" id ="NameID">
+                </div>
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">Телефон</div>
+                    <input name = "Phone" class="input" data-input="" required type="tel"  placeholder="Телефон" data-mask-phone="" id = "PhoneID">
+                </div>
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">E-mail</div>
+                    <input name = "Email" class="input" data-input="" required type="email" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"  placeholder="E-mail" id = "EmailID">
+                </div>
+            </div>
+            <div class="partners-requisites__form-area">
+                <div class="input-wrapper input-wrapper_textarea" data-input-parent="">
+                    <div class="input-wrapper__placeholder placeholder_background">Комментарий к заявке</div>
+                    <input name = "Comments" class="textarea" data-input="" type="text" placeholder="Комментраий к заявке" >
+                </div>
+            </div>
+            <div class="partners-requisites__form-bot">
+                <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с
+                    <a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a>
+                </div>
+                <button class="partners-requisites__form-btn btn-hover_parent" type="submit">
+                    <div class="btn-hover_circle"></div>
+                    <span>Отправить</span>
+                </button>
+                <input type="hidden" name="Full_url" value="<?=$arResult['SECTIONS_OF']?>">
+                <input type="hidden" name="Url_of_elem" value="<?=$arResult["DETAIL_PAGE_URL"]?>">
+                <input type="hidden" name="Name_of_elem" value="<?=$arResult["NAME"]?>">
+            </div>
+        </form>
+    </div>
+</div>
+<?php
+$this->EndViewTarget();
+?>
 <span class="catalog-detail__brandmark"><?= $arResult['PROPERTIES']['BRANDS']['VALUE'] ?></span>
             <div class="catalog-detail__col info" data-aos="fade-up">
                 <div class="catalog-detail__title"><?=$arResult["NAME"]?></div>
@@ -181,47 +224,10 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                     </div>
                 </div>
 
+                <?php
+                $APPLICATION->ShowViewContent('form');
+                ?>
 
-                <div class="catalog-detail__form" data-aos="fade-up">
-                    <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
-                    <div class="catalog-detail__form-content">
-                        <form class="partners-requisites__form" data-form="catalog-detail" method ="POST">
-                            <?=bitrix_sessid_post()?>
-                            <div class="partners-requisites__form-top">
-                                <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">Имя</div>
-                                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" id ="NameID">
-                                </div>
-                                <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">Телефон</div>
-                                    <input name = "Phone" class="input" data-input="" required type="tel"  placeholder="Телефон" data-mask-phone="" id = "PhoneID">
-                                </div>
-                                <div class="input-wrapper" data-input-parent="">
-                                    <div class="input-wrapper__placeholder">E-mail</div>
-                                    <input name = "Email" class="input" data-input="" required type="email" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"  placeholder="E-mail" id = "EmailID">
-                                </div>
-                            </div>
-                            <div class="partners-requisites__form-area">
-                                <div class="input-wrapper input-wrapper_textarea" data-input-parent="">
-                                    <div class="input-wrapper__placeholder placeholder_background">Комментарий к заявке</div>
-                                    <input name = "Comments" class="textarea" data-input="" type="text" placeholder="Комментраий к заявке" >
-                                </div>
-                            </div>
-                            <div class="partners-requisites__form-bot">
-                                <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с
-                                    <a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a>
-                                </div>
-                                <button class="partners-requisites__form-btn btn-hover_parent" type="submit">
-                                    <div class="btn-hover_circle"></div>
-                                    <span>Отправить</span>
-                                </button>
-                                <input type="hidden" name="Full_url" value="<?=$current_url?>">
-                                <input type="hidden" name="Url_of_elem" value="<?=$arResult["DETAIL_PAGE_URL"]?>">
-                                <input type="hidden" name="Name_of_elem" value="<?=$arResult["NAME"]?>">
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 <a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult["NEXT_ELEM"]["DETAIL_PAGE_URL"]?>">
                     <div class="catalog-detail__rect-circle">
                         <div class="catalog-hero__rec-circle">

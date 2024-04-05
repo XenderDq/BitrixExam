@@ -1,5 +1,5 @@
 
-document.querySelector('.partners-requisites__form').addEventListener('submit', function(event) {
+document.querySelector('[js-form]').addEventListener('submit', function(event) {
     event.preventDefault();
     let formData = new FormData(this);
     let convertedData = {};
@@ -12,7 +12,9 @@ document.querySelector('.partners-requisites__form').addEventListener('submit', 
         data: jsonData,
         method: 'POST',
         dataType: 'json',
-        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
         onsuccess: function (data) {
             if ('errors' in data) {
                 alert(data.errors.join('\n'));
@@ -20,4 +22,5 @@ document.querySelector('.partners-requisites__form').addEventListener('submit', 
         }
     });
 });
+
 

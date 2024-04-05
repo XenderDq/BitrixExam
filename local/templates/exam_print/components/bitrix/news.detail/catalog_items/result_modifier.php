@@ -14,7 +14,6 @@ $arRes = CIBlockElement::GetList(
         'DETAIL_PAGE_URL'
     ]
 );
-
 while ($res = $arRes->GetNext()) {
     $res['PREVIEW_PICTURE'] = CFile::ResizeImageGet(
         $res['PREVIEW_PICTURE'],
@@ -32,7 +31,14 @@ $arRes1 = CIBlockElement::GetList(
         'IBLOCK_ID' => 8,
     ],
 );
+
 if ($res1 = $arRes1->GetNext()) {
     $arResult['PROPERTIES']['BRANDS']['VALUE'] = $res1["NAME"];
 }
 
+$arResult['SECTIONS_OF'] = [];
+foreach ($arResult['SECTION']['PATH'] as $i => $item) {
+    $arResult['SECTIONS_OF'][] =  $item['NAME'];
+}
+
+$arResult['SECTIONS_OF'] = implode('/', $arResult['SECTIONS_OF']);
