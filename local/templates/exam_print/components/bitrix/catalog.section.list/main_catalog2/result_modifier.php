@@ -24,6 +24,10 @@
      }
  }
 
+ 
+
+
+
  foreach ($arResult['SECTIONS'] as $i => $value) {
      if (!empty($value['DETAIL_PICTURE'])) {
          $arResult['SECTIONS'][$i]['DETAIL_PICTURE'] = CFile::GetPath($value['DETAIL_PICTURE']);

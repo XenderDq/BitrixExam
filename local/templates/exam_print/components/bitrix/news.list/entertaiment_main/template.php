@@ -2,6 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
     die();
 }
+
 ?>
 <div class="main-filials__bottom" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['ITEMS'] as $i => $item):?>

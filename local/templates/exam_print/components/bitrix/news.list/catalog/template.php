@@ -4,6 +4,7 @@
         die();
     }
 
+
 ?>
 <!--<script src = "--><?php //$_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH ?><!-- /components//index1.js"></script>-->
 <!--            <div class="popup-filters mobile" data-popup-wrapper="catalog-filters" data-overlay-on>-->

@@ -2,7 +2,9 @@
 if ( ! defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
+echo '<pre>';
+var_dump($arResult);
+echo '</pre>';
 ?>
 <div class="main-catalog__list container" data-aos="fade-up" data-aos-duration="1500">
     <?php foreach ($arResult['SECTIONS'] as $i => $item):?>

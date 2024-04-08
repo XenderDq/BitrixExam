@@ -99,3 +99,91 @@ while ($arData = $rsData->GetNext()) {
 }
 }
 
+$arF=Array(
+    'IBLOCK_ID' => 5,
+    "ID"=>$arResult['SECTION']['PATH'][0]['ID']
+);
+$db_list = CIBlockSection::GetList(
+    Array("SORT"=>"ASC"),
+    $arF,
+    false,
+    array("UF_*"));
+
+while($ar_result = $db_list->Fetch()) {
+    $arResult['ITEMS']['UF_OF_CHAR'] = $ar_result['UF_CHARACT'];
+}
+
+$a = [];
+$c = [];
+$b = [];
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $a[] = $item['PROPERTIES'];
+}
+
+function scanArray($a) {
+    $result = [];
+    foreach ($a as $key => $value) {
+        if (is_array($value)) {
+            $result = array_merge($result, scanArray($value)); // объединяем результаты рекурсивного вызова функции с текущим результатом
+        } else {
+            if ($key === 'VALUE' || $key === 'NAME' || $key === 'DESCRIPTION') {
+                $result[] = [$key => $value];
+            }
+        }
+    }
+    return $result;
+}
+
+
+
+$result = scanArray($a);
+
+
+
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+    foreach ($result as $j => $cItem) {
+        if ($cItem['NAME'] == $firstElement && array_key_exists($j+1, $result)) {
+            $nextItem = $result[$j+1];
+            $b[] = $nextItem['VALUE'];
+            $nextItem = $result[$j+1];
+            $b [] = $nextItem['DESCRIPTION'];
+        }
+    }
+}
+
+function filterEmptyStrings($b) {
+    return !empty($b);
+}
+$b = array_filter($b, 'filterEmptyStrings');
+
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+    foreach ($c as $j => $cItem) {
+        if ($cItem['NAME'] == $firstElement) {
+            $b[] = $cItem['NAME'];
+        }
+    }
+}
+echo '<pre>';
+var_dump($b);
+echo '</pre>';
+
+
+
+//$b = array_filter($b);
+//
+//
+//$matchingValues = [];
+//foreach ($arResult['ITEMS'] as $i => $item) {
+//    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+//    foreach ($item["PROPERTIES"] as $property) {
+//        if($firstElement == $property['NAME']) {
+//            $matchingValues[] = $property['VALUE'];
+//        }
+//    }
+//}
+
+
+
+
