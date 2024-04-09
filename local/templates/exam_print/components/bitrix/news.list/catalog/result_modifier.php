@@ -153,13 +153,13 @@ foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
         false,
         array("UF_*"));
     while($ar_result = $db_list->Fetch()) {
-        $arResult['ITEMS']['UF_CHARACT'] = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+        $arResult['ITEMS']['UF_CHARACT'] = $ar_result['UF_CHARACT'];
         }
     }
 }
-
-$arResult['ITEMS']['UF_CHARACT'] = $arResult['UF_CHARACT'];
-
+if ($counter == 0) {
+    $arResult['ITEMS']['UF_CHARACT'] = $arResult['UF_CHARACT'];
+}
 echo '<pre>';
 var_dump($arResult['ITEMS']['UF_CHARACT']);
 echo '</pre>';
