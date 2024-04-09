@@ -99,6 +99,11 @@ while ($arData = $rsData->GetNext()) {
 }
 }
 
+
+
+
+
+/////////////////
 $arF=Array(
     'IBLOCK_ID' => 5,
     "ID"=>$arResult['SECTION']['PATH'][0]['ID']
@@ -112,6 +117,52 @@ $db_list = CIBlockSection::GetList(
 while($ar_result = $db_list->Fetch()) {
     $arResult['ITEMS']['UF_OF_CHAR'] = $ar_result['UF_CHARACT'];
 }
+$counter = 0;
+foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
+    $db_list = CIBlockSection::GetList(
+        Array("SORT"=>"ASC"),
+        [
+            'IBLOCK_ID' => 5,
+            "ID"=>$item['ID']
+        ],
+        false,
+        array("UF_*"));
+    while($ar_result = $db_list->Fetch()) {
+        if (empty($ar_result['UF_CHARACT'])) {
+            $arResult['UF_CHARACT'][] = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+        }if(!empty($ar_result['UF_CHARACT'])) {
+            $counter = 1;
+            goto end;
+        }
+    }
+}
+
+$arResult['UF_CHARACT'] = array_filter($arResult['UF_CHARACT']);
+
+if ($counter == 1) {
+    end:
+foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
+    $db_list = CIBlockSection::GetList(
+       [
+           "SORT"=>"ASC"
+       ],
+        [
+            'IBLOCK_ID' => 5,
+            "ID"=>$item['ID']
+        ],
+        false,
+        array("UF_*"));
+    while($ar_result = $db_list->Fetch()) {
+        $arResult['ITEMS']['UF_CHARACT'] = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+        }
+    }
+}
+
+$arResult['ITEMS']['UF_CHARACT'] = $arResult['UF_CHARACT'];
+
+echo '<pre>';
+var_dump($arResult['ITEMS']['UF_CHARACT']);
+echo '</pre>';
 
 $a = [];
 $c = [];
@@ -143,47 +194,38 @@ $result = scanArray($a);
 foreach ($arResult['ITEMS'] as $i => $item) {
     $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
     foreach ($result as $j => $cItem) {
-        if ($cItem['NAME'] == $firstElement && array_key_exists($j+1, $result)) {
+        if ($cItem['NAME'] == $firstElement) {
             $nextItem = $result[$j+1];
             $b[] = $nextItem['VALUE'];
-            $nextItem = $result[$j+1];
-            $b [] = $nextItem['DESCRIPTION'];
         }
     }
 }
 
+foreach ($arResult['ITEMS'] as $i => $item) {
+    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
+    foreach ($result as $j => $cItem) {
+        if ($cItem['NAME'] == $firstElement) {
+            $nextItem = $result[$j+2];
+            $b[] = $nextItem['DESCRIPTION'];
+        }
+    }
+}
 function filterEmptyStrings($b) {
     return !empty($b);
 }
 $b = array_filter($b, 'filterEmptyStrings');
 
-foreach ($arResult['ITEMS'] as $i => $item) {
-    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
-    foreach ($c as $j => $cItem) {
-        if ($cItem['NAME'] == $firstElement) {
-            $b[] = $cItem['NAME'];
-        }
-    }
-}
+
+$middle = count($b) / 2;
+$firstHalf = array_slice($b, 0, $middle);
+$secondHalf = array_slice($b, $middle);
+
+$result = array_map(function($elem1, $elem2) {
+    return $elem1 . " " . $elem2;
+}, $firstHalf, $secondHalf);
+
 echo '<pre>';
-var_dump($b);
+var_dump($result);
 echo '</pre>';
-
-
-
-//$b = array_filter($b);
-//
-//
-//$matchingValues = [];
-//foreach ($arResult['ITEMS'] as $i => $item) {
-//    $firstElement = $arResult['ITEMS']['UF_OF_CHAR'][$i];
-//    foreach ($item["PROPERTIES"] as $property) {
-//        if($firstElement == $property['NAME']) {
-//            $matchingValues[] = $property['VALUE'];
-//        }
-//    }
-//}
-
-
 
 
