@@ -4,7 +4,6 @@
         die();
     }
 
-
 ?>
 <!--<script src = "--><?php //$_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH ?><!-- /components//index1.js"></script>-->
 <!--            <div class="popup-filters mobile" data-popup-wrapper="catalog-filters" data-overlay-on>-->
@@ -190,6 +189,7 @@
         <a class="catalog-card" href="<?= $item['DETAIL_PAGE_URL']?>">
         <div class="catalog-card__icons">
             <div class="catalog-card__icons-item">
+
                 <?php if ($item['PROPERTIES']['LABEL_CATALOG']['VALUE']=='T'):?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="70" viewBox="0 0 100 70" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M88.0226 26.7151C91.8593 23.4577 93.7641 20.2092 93.0947 17.3613C91.2302 9.42969 70.1042 7.60901 45.9085 13.2947C21.7129 18.9804 3.60983 30.0193 5.4743 37.9509C6.13886 40.778 9.25045 42.8287 14.0759 44.0399C10.2391 47.2974 8.33433 50.5459 9.00378 53.3938C10.8683 61.3254 31.9942 63.146 56.1899 57.4604C80.3856 51.7747 98.4886 40.7357 96.6241 32.8041C95.9596 29.977 92.848 27.9263 88.0226 26.7151Z" fill="#3FFFDC"></path>
@@ -233,7 +233,6 @@
                     </svg>
                 <?php endif;?>
             </div>
-
         </div>
         <div class="catalog-card__inner">
             <div class="catalog-card__top">
@@ -245,16 +244,30 @@
                 </div>
                 <div class="catalog-card__title"><?=$item["NAME"]?></div>
             </div>
+
             <div class="catalog-card__bot">
                 <div class="catalog-card__text"><?=$item['PREVIEW_TEXT']?></div>
+                <?php foreach ($item['PROPERTIES'] as $key => $item1): ?>
+                    <?php if ($key == $arResult['NEW_PROP']['UF_CHARACT'][$i]) :?>
+                    <?php elseif (in_array($key, $arResult['NEW_PROP']) && $item1['VALUE'] != NULL) :?>
+                        <?php
+                        echo '<pre>';
+                        var_dump($item1['VALUE']);
+                        echo '</pre>';
+                        ?>
+                    <?php endif;?>
+                <?php endforeach; ?>
                 <div class="catalog-card__plugs">
                     <div class="catalog-card__plug">
-                        <div class="catalog-card__plug-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+                        <div class="catalog-card__plug-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                 <path d="M4.58505 10.9704C5.00547 9.17667 5.21568 8.27978 5.71035 7.61412C6.12854 7.0514 6.68728 6.60847 7.33058 6.32973C8.09156 6 9.01275 6 10.8551 6H13.1449C14.9872 6 15.9084 6 16.6694 6.32973C17.3127 6.60847 17.8715 7.0514 18.2896 7.61412C18.7843 8.27978 18.9945 9.17667 19.4149 10.9704L20.1462 14.0905C20.7859 16.8199 21.1058 18.1846 20.7522 19.2548C20.4553 20.1533 19.8496 20.9175 19.0425 21.4115C18.0812 22 16.6795 22 13.8761 22H10.1239C7.32049 22 5.91879 22 4.9575 21.4115C4.15044 20.9175 3.54466 20.1533 3.24781 19.2548C2.89423 18.1846 3.21409 16.8199 3.8538 14.0904L4.58505 10.9704Z" fill="#0068FF"></path>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.5C12.8284 6.5 13.5 5.82843 13.5 5C13.5 4.17157 12.8284 3.5 12 3.5C11.1716 3.5 10.5 4.17157 10.5 5C10.5 5.82843 11.1716 6.5 12 6.5ZM12 8C13.6569 8 15 6.65685 15 5C15 3.34315 13.6569 2 12 2C10.3431 2 9 3.34315 9 5C9 6.65685 10.3431 8 12 8Z" fill="#0068FF"></path>
-                            </svg></div>
+                            </svg>
+                        </div>
                         <div class="catalog-card__plug-text"><?=$item['PROPERTIES']['VES']['VALUE']?> <?=$item['PROPERTIES']['VES']['DESCRIPTION']?></div>
-                        <div class="catalog-card__plug-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
+                        <div class="catalog-card__plug-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                 <rect x="0.5" y="0.5" width="23" height="23" rx="5.5" fill="white"></rect>
                                 <path d="M12.75 11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11Z" fill="#0068FF"></path>
                                 <path d="M13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8Z" fill="#0068FF"></path>
