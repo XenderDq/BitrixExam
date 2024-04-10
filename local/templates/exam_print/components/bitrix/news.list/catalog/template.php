@@ -5,6 +5,7 @@
     }
 
 ?>
+
 <!--<script src = "--><?php //$_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH ?><!-- /components//index1.js"></script>-->
 <!--            <div class="popup-filters mobile" data-popup-wrapper="catalog-filters" data-overlay-on>-->
 <!--                <div class="popup-filters__close popup-video__close" data-popup-close="catalog-filters">-->
@@ -248,8 +249,7 @@
             <div class="catalog-card__bot">
                 <div class="catalog-card__text"><?=$item['PREVIEW_TEXT']?></div>
                 <?php foreach ($item['PROPERTIES'] as $key => $item1): ?>
-                    <?php if ($key == $arResult['NEW_PROP']['UF_CHARACT'][$i]) :?>
-                    <?php elseif (in_array($key, $arResult['NEW_PROP']) && $item1['VALUE'] != NULL) :?>
+                    <?php if (in_array($key, $item['PROPERTIES']['NEW_PROP'])&& $item1['VALUE'] != NULL) :?>
                         <?php
                         echo '<pre>';
                         var_dump($item1['VALUE']);
@@ -318,6 +318,7 @@
             </div>
         </div>
     </a>
+
 <?php endforeach;?>
     <?php
     $this->EndViewTarget();

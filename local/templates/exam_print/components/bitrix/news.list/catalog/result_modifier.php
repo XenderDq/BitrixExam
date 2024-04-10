@@ -10,14 +10,14 @@ $rsData = CIBlockSection::GetList(
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
     ],
     [
-        false
+        'ELEMENT_SUBSECTIONS' => 'Y'
     ],
     [
         'ID',
         'NAME',
         'SECTION_PAGE_URL',
         'CODE',
-
+        'UF_CHARACT'
     ]
 );
 while ($arData = $rsData->GetNext()) {
@@ -30,8 +30,9 @@ $rsData = CIBlockSection::GetList(
     ],
     [
         'ID' => $arResult['SECTION']['PATH'][0]['ID'],
-        'ACTIVE' => 'Y',
+        'GLOBAL_ACTIVE' => 'Y',
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+
     ],
     [
         false
@@ -44,38 +45,34 @@ $rsData = CIBlockSection::GetList(
         'UF_CHARACT'
     ]
 );
-$parentUfCharact = [];
 
 while ($arData = $rsData->GetNext()) {
    $arResult['NEW_PROP'] = $arData['UF_CHARACT'];
 }
+foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
+    if (empty($item['UF_CHARACT'])) {
+        $arResult['SUB_SECTIONS'][$i]['UF_CHARACT'] = $arResult['NEW_PROP'];
+    }
+}
+
+$a = 0;
 
 foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
-    $db_list = CIBlockSection::GetList(
-        Array("SORT"=>"ASC"),
-        [
-            'IBLOCK_ID' => 5,
-            "ID"=>$item['ID']
-        ],
-        false,
-        [
-            'UF_CHARACT'
-        ]
-    );
-    $ufCharact = [];
-    while($ar_result = $db_list->Fetch()) {
-        if (!empty($ar_result['UF_CHARACT'])) {
-            $ufCharact = $ar_result['UF_CHARACT'];
-            break;
+    $a = $item['ID'];
+    foreach ($arResult['ITEMS'] as $key => $item1) {
+        if ($a == $item1['IBLOCK_SECTION_ID']) {
+            $arResult["ITEMS"][$key]['PROPERTIES']['NEW_PROP'] = $arResult['SUB_SECTIONS'][$i]['UF_CHARACT'];
         }
     }
-    if (empty($ufCharact)) {
-        $ufCharact = NULL;
-    }
-    $arResult['NEW_PROP']['UF_CHARACT'][] = $ufCharact;
 }
 
 
+
+
+
+
+
+////////////////////////////////////////////////////
 $arResult['CURRENT_SECTION'] = end($arResult['SECTION']['PATH']);
 
 foreach ($arResult['ITEMS'] as $key => $item) {
