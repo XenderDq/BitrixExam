@@ -10,7 +10,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
     <script src="script.js"></script>
 </head>
 <body>
-<form id="feedback-form">
+<form id="feedback-form" js-form>
     <input type="tel" name="phone" required>
     <input type="hidden" name="sms_code" id="sms_code">
     <button type="submit">Отправить</button>
@@ -21,7 +21,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
 </div>
 <div id="error_message" style="display:none; color:red;"></div>
 <script>
-    document.getElementById('feedback-form').addEventListener('submit', function(event) {
+    document.querySelector('[js-form]').addEventListener('submit', function(event) {
         event.preventDefault();
         let formData = new FormData(this);
         let convertedData = {};
@@ -45,9 +45,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
                 if (xhr.status === 200) {
                     let response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        alert('!Форма отправлена успешно!');
+                        alert('Форма отправлена успешно!');
                     } else {
-                        alert('34567890');
+                        alert('Неверный код!');
                     }
                 } else {
                     alert('Произошла ошибка при отправке запроса на сервер: ' + xhr.status);

@@ -22,7 +22,9 @@ if ($confirmationCode == $code) {
     echo json_encode($response);
     exit;
 } else {
-    $response = array('success' => false, 'message' => 'Неверный код подтверждения');
+    $response = ['success' => false];
+    echo json_encode($response);
+    exit;
 }
 
 
