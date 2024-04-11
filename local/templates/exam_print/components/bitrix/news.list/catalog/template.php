@@ -4,6 +4,9 @@
         die();
     }
 
+
+
+
 ?>
 
 <!--<script src = "--><?php //$_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH ?><!-- /components//index1.js"></script>-->
@@ -245,14 +248,13 @@
                 </div>
                 <div class="catalog-card__title"><?=$item["NAME"]?></div>
             </div>
-
             <div class="catalog-card__bot">
                 <div class="catalog-card__text"><?=$item['PREVIEW_TEXT']?></div>
-                <?php foreach ($item['PROPERTIES'] as $key => $item1): ?>
-                    <?php if (in_array($key, $item['PROPERTIES']['NEW_PROP'])&& $item1['VALUE'] != NULL) :?>
+                <?php foreach ($item['PROPERTIES']['NEW_PROP'] as $key => $item1): ?>
+                    <?php if ($item['PROPERTIES'][$item1]['VALUE'] != NULL) :?>
                         <?php
                         echo '<pre>';
-                        var_dump($item1['VALUE']);
+                        var_dump($item['PROPERTIES'][$item1]['NAME'] . " - " .$item['PROPERTIES'][$item1]['VALUE']);
                         echo '</pre>';
                         ?>
                     <?php endif;?>
@@ -313,6 +315,7 @@
                                 <path d="M13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8Z" fill="#0068FF"></path>
                                 <rect x="0.5" y="0.5" width="23" height="23" rx="5.5" stroke="#CEDFF5"></rect>
                             </svg></div>
+
                     </div>
                 </div>
             </div>
@@ -323,8 +326,6 @@
     <?php
     $this->EndViewTarget();
     ?>
-
-
 
 
 

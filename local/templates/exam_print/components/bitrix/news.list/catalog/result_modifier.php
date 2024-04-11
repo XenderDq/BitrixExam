@@ -21,7 +21,7 @@ $rsData = CIBlockSection::GetList(
     ]
 );
 while ($arData = $rsData->GetNext()) {
-    $arResult['SUB_SECTIONS'][]= $arData;
+    $arResult['SUB_SECTIONS'][$arData['ID']]= $arData;
 }
 
 $rsData = CIBlockSection::GetList(
@@ -49,28 +49,174 @@ $rsData = CIBlockSection::GetList(
 while ($arData = $rsData->GetNext()) {
    $arResult['NEW_PROP'] = $arData['UF_CHARACT'];
 }
+
 foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
     if (empty($item['UF_CHARACT'])) {
         $arResult['SUB_SECTIONS'][$i]['UF_CHARACT'] = $arResult['NEW_PROP'];
     }
 }
 
-$a = 0;
-
-foreach ($arResult['SUB_SECTIONS'] as $i => $item) {
-    $a = $item['ID'];
-    foreach ($arResult['ITEMS'] as $key => $item1) {
-        if ($a == $item1['IBLOCK_SECTION_ID']) {
-            $arResult["ITEMS"][$key]['PROPERTIES']['NEW_PROP'] = $arResult['SUB_SECTIONS'][$i]['UF_CHARACT'];
+    foreach ($arResult['ITEMS'] as $key => $item) {
+        if (isset($item['IBLOCK_SECTION_ID']) && empty(!$item['IBLOCK_SECTION_ID'])) {
+            $arResult["ITEMS"][$key]['PROPERTIES']['NEW_PROP'] = $arResult['SUB_SECTIONS'][$item['IBLOCK_SECTION_ID']]['UF_CHARACT'];
         }
     }
+
+//$a = [];
+//    $b = [];
+//    $c = 1;
+//    for ($i = 1; $i < 11; $i++) {
+//
+//        for ($j = 1; $j < 11; $j++) {
+//            $c = $j*$i;
+//           $a[$i][$j] = $c ;
+//        }
+//    }
+//
+//$students = [
+//    [
+//        'name' => 'Иван',
+//        'math' => 'cool',
+//        'physics' => 90,
+//        'chemistry' => 78
+//    ],
+//    [
+//        'name' => 'Оле',
+//        'math' => 'bad',
+//        'physics' => 3,
+//        'chemistry' => 30
+//    ],
+//    [
+//        'name' => 'Андрей',
+//        'math' => 'false',
+//        'physics' => 100,
+//        'chemistry' => 50
+//    ],
+//];
+//function compareNames($a, $b) {
+//    return strcmp($a['name'], $b['name']);
+//}
+//
+//// Сортируем массив по именам
+//usort($students, 'compareNames');
+//echo '<pre>';
+//var_dump($students);
+//echo '</pre>';
+//
+//
+//
+//$sr = 0;
+//$s = [];
+//foreach ($students as $i => $item) {
+//    if (is_array($item)) {
+//        $sr += array_sum($item) / count($item);
+//        $s[] = $sr;
+//    }
+//}
+function getAverageMark($student) {
+    $sum = array_sum($student['marks']);
+    $averageMark = $sum / count($student['marks']);
+    return $averageMark;
 }
 
+$students = [
+    ['name' => 'Ivan', 'surname' => 'Ivanov', 'group' => 1, 'marks' => [5, 4, 4, 5]],
+    ['name' => 'Petr', 'surname' => 'Petrov', 'group' => 2, 'marks' => [3, 4, 5, 3]],
+    // ...
+];
+
+// Получим средний балл первого студента
+$student1 = $students[0];
+$averageMark1 = getAverageMark($student1);
+//echo "Average mark of the first student: $averageMark1\n";
+
+// Получим средний балл второго студента
+$student2 = $students[1];
+$averageMark2 = getAverageMark($student2);
+//echo "Average mark of the second student: $averageMark2\n";
 
 
 
 
 
+$products = [
+    ['name' => 'Product 1', 'price' => 100, 'category' => 'Electronics'],
+    ['name' => 'Product 2', 'price' => 500, 'category' => 'Clothes'],
+    ['name' => 'Product 3', 'price' => 5, 'category' => 'Clothes'],
+    ['name' => 'Product 4', 'price' => 50, 'category' => 'Clothes'],
+    ['name' => 'Product 5', 'price' => 5000, 'category' => 'Clothes'],
+    ['name' => 'Product 6', 'price' => 530, 'category' => 'Clothes'],
+    ['name' => 'Product 7', 'price' => 503, 'category' => 'Clothes'],
+];
+
+function getTopExpensiveProducts($products, $top) {
+    $categories = [];
+
+    foreach ($products as $product) {
+        $categoryName = $product['category'];
+        if (!isset($categories[$categoryName])) {
+            $categories[$categoryName] = [];
+        }
+        $categories[$categoryName][] = $product;
+    }
+
+    $topProducts = [];
+
+    foreach ($categories as $categoryName => $categoryProducts) {
+        $prices = array_column($categoryProducts, 'price');
+        array_multisort($prices, SORT_DESC, $categoryProducts);
+        $topProducts[$categoryName] = array_slice($categoryProducts, 0, $top);
+    }
+
+    return $topProducts;
+}
+
+$top = 5;
+
+$topProducts = getTopExpensiveProducts($products, $top);
+//echo '<pre>';
+//var_dump($topProducts);
+//echo '</pre>';
+
+
+
+
+$users = [
+    ['name' => 'User 1', 'reg_date' => '2021-01-01', 'email' => 'user1@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-02-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-02-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-02-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-02-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-02-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com'],
+    ['name' => 'User 2', 'reg_date' => '2021-03-15', 'email' => 'user2@example.com']
+];
+    $a = [] ;
+    $arr = [];
+    $count= 0;
+            foreach ($users as $i => $item) {
+                $a = $item['reg_date'];
+                while ($a === $item['reg_date']) {
+                    $count++;
+                }
+                $arr[$item['reg_date']] = $count;
+                break;
+            }
+$arr = array_unique($arr);
+echo '<pre>';
+var_dump($arr);
+echo '</pre>';
+
+
+/*
+ Дан массив, содержащий информацию о пользователях сайта (имя, дата регистрации, email). Напишите функцию, которая вернет количество пользователей, зарегистрированных в каждый месяц.*/
+//echo '<pre>';
+//var_dump($a);
+//echo '</pre>';
 
 ////////////////////////////////////////////////////
 $arResult['CURRENT_SECTION'] = end($arResult['SECTION']['PATH']);

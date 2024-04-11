@@ -42,19 +42,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
                     let response = JSON.parse(xhr.responseText);
                     if (response.success) {
                         alert('Форма отправлена успешно!');
                     } else {
                         alert('Неверный код!');
                     }
-                } else {
-                    alert('Произошла ошибка при отправке запроса на сервер: ' + xhr.status);
-                }
             }
         };
-
         xhr.send('confirmation_code=' + confirmationCode);
     }
 </script>
