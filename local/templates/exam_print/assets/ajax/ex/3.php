@@ -17,12 +17,8 @@ $jsonData = file_get_contents('php://input');
 
 $jsonData = json_decode($jsonData, true);
 
-
 $code = $jsonData["serverResponse111"];
 
-echo '<pre>';
-var_dump($jsonData["confirmation_code"]);
-echo '</pre>';
 $element = [];
 $rsElement = CIBlockElement::GetList(
     false,
@@ -30,10 +26,12 @@ $rsElement = CIBlockElement::GetList(
            'IBLOCK_ID' => 6,
            "ACTIVE" => "Y",
            'CODE' => $code,
+           'DETAIL_TEXT' => $jsonData["confirmation_code"]
     ],
     false,
     false,
     [
+        'CODE',
         'ID',
         'NAME',
         'PREVIEW_TEXT',
@@ -45,7 +43,6 @@ while ($arData = $rsElement->GetNext()) {
     $element = $arData;
 }
 
-if ($element['DETAIL_TEXT']  == $jsonData["confirmation_code"]) {
     $el = new CIBlockElement;
     $record = array(
         "IBLOCK_ID" => 7,
@@ -55,7 +52,11 @@ if ($element['DETAIL_TEXT']  == $jsonData["confirmation_code"]) {
 
     if (!$el->Add($record)) {
         $errors[] = $el->LAST_ERROR;
-        echo json_encode(['errors' => $errors]);
+        echo json_encode(['errors' => $errors , 'status' => false]);
         exit;
-    }
+
 }
+
+$rsElement = CIBlockElement::Delete(
+    $element['ID']
+);

@@ -25,6 +25,7 @@ $jsonData = file_get_contents('php://input');
 //$nameRegex = '/^[А-Яа-яЁё\s]+$/u';
 //
 $jsonData = json_decode($jsonData, true);
+
 //
 //if ($jsonData['sessid'] != bitrix_sessid()) {
 //    $errors[] = 'Нет соответствий с сессией';
@@ -47,19 +48,16 @@ $jsonData = json_decode($jsonData, true);
 //    echo json_encode(['errors' => $errors]);
 //    exit;
 //}
-$string_quest = "";
+if (!isset($jsonData['phone'])) {
+    $errors[] = 'пустой телефон';
+    echo json_encode(['errors' => $errors , 'status' => false]);
+    exit;
+}
+
 $code = rand(1, 1);
 $a = randString(20);
-if (!empty($jsonData['Phone'])) {
-    $phone = urlencode($jsonData['Phone']);
-    $url = "https://sms.ru/sms/send?api_id=3E609D03-FB45-0619-7B2D-ECAA6A08D59A&to=$phone&text=Ваш код подтверждения: $code";
-    echo file_get_contents($url);
-}
- foreach ($jsonData as $i => $item) {
-        $string_quest = $string_quest.$i.":".$item;
-        $string_quest = $string_quest."\n";
-    }
-    $string_quest = htmlspecialchars($string_quest);
+
+    $string_quest = htmlspecialchars($jsonData['phone']);
     $el = new CIBlockElement;
     $record = array(
         "IBLOCK_ID" => 6,
@@ -71,13 +69,11 @@ if (!empty($jsonData['Phone'])) {
 
     if (!$el->Add($record)) {
         $errors[] = $el->LAST_ERROR;
-        echo json_encode(['errors' => $errors]);
+        echo json_encode(['errors' => $errors , 'status' => false]);
         exit;
     }
 
-
-
-echo json_encode(['a' => $a]);
+echo json_encode(['a' => $a, 'data' => $jsonData]);
 exit;
 
 

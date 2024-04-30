@@ -18,13 +18,10 @@ Loader::includeModule('iblock');
 <body>
 <form id="feedback-form" js-form>
     <input type="tel" name="phone" required>
-    <input type="hidden" name="sms_code" id="sms_code">
+
     <button type="submit">Отправить</button>
 </form>
-<div id="sms_code_block" style="display:none;">
-    <input type="text" id="user_sms_code" required>
-    <button type="button" id="check_code_button">Проверить код</button>
-</div>
+
 <div id="error_message" style="display:none; color:red;"></div>
 <script>
 
@@ -44,6 +41,7 @@ Loader::includeModule('iblock');
             if (xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
                 let b = prompt('Введите код подтверждения, отправленный на ваш номер телефона:');
+                console.log(response);
                 handleServerResponse(response["a"], b); // вызываем коллбэк-функцию
             }
         };
