@@ -1,6 +1,12 @@
 <?php
+use Bitrix\Main\Application;
+use Bitrix\Main\Context;
+use Bitrix\Main\Request;
+use Bitrix\Main\Server;
+use Bitrix\Main\Loader;
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php';
+Loader::includeModule('iblock');
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +27,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
 </div>
 <div id="error_message" style="display:none; color:red;"></div>
 <script>
+
+    let serverResponse;
     document.querySelector('[js-form]').addEventListener('submit', function(event) {
         event.preventDefault();
         let formData = new FormData(this);
@@ -32,26 +40,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/local/templates/exam_print/assets/ajax/ex/req.php', true);
         xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
-        xhr.send(jsonData);
-        let  confirmationCode = prompt('Введите код подтверждения, отправленный на ваш номер телефона:');
-        sendConfirmationCode(confirmationCode);
-    });
-    function sendConfirmationCode(confirmationCode) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/local/templates/exam_print/assets/ajax/ex/req.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                    let response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        alert('Форма отправлена успешно!');
-                    } else {
-                        alert('Неверный код!');
-                    }
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+                let b = prompt('Введите код подтверждения, отправленный на ваш номер телефона:');
+                handleServerResponse(response["a"], b); // вызываем коллбэк-функцию
             }
         };
-        xhr.send('confirmation_code=' + confirmationCode);
+        xhr.send(jsonData);
+    });
+
+    function handleServerResponse(response, b) {
+        let ba = b;
+        let serverResponse1 = response;
+        let data = {
+            confirmation_code: ba,
+            serverResponse111: serverResponse1
+        };
+        let jsonData = JSON.stringify(data);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/local/templates/exam_print/assets/ajax/ex/3.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(jsonData);
     }
+
 </script>
 </body>
 </html>
