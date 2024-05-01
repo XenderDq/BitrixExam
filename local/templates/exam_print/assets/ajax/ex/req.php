@@ -25,6 +25,7 @@ $jsonData = json_decode($jsonData, true);
 
 if ($jsonData['sessid'] != bitrix_sessid()) {
     $errors[] = 'Нет соответствий с сессией';
+    echo json_encode(['errors' => $errors , 'status' => false]);
     exit;
 }
 
