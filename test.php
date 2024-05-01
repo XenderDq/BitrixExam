@@ -17,6 +17,7 @@ Loader::includeModule('iblock');
 </head>
 <body>
 <form id="feedback-form" js-form>
+    <?=bitrix_sessid_post()?>
     <input type="tel" name="phone" required>
 
     <button type="submit">Отправить</button>
@@ -37,28 +38,44 @@ Loader::includeModule('iblock');
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/local/templates/exam_print/assets/ajax/ex/req.php', true);
         xhr.setRequestHeader('Content-Type', 'application/json; utf-8');
+        xhr.setRequestHeader('X-Requested-With', 'AJAX');
         xhr.onload = function() {
             if (xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
-                let b = prompt('Введите код подтверждения, отправленный на ваш номер телефона:');
-                console.log(response);
-                handleServerResponse(response["a"], b); // вызываем коллбэк-функцию
+                if (response.status === false) {
+                    let errors = response.errors.join('\n');
+                    alert(errors);
+                } else {
+                    handleServerResponse(response["a"]);
+                }
             }
         };
         xhr.send(jsonData);
     });
 
-    function handleServerResponse(response, b) {
-        let ba = b;
-        let serverResponse1 = response;
+    function handleServerResponse(response) {
+        let answerOfPrompt = prompt('Введите код подтверждения, отправленный на ваш номер телефона:');
+        let serverResponseCode = response;
         let data = {
-            confirmation_code: ba,
-            serverResponse111: serverResponse1
+            confirmation_code: answerOfPrompt,
+            serverResponseWaitCode: serverResponseCode
         };
         let jsonData = JSON.stringify(data);
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/local/templates/exam_print/assets/ajax/ex/3.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-Requested-With', 'AJAX');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+                if (response.status === true) {
+                    alert("Успех");
+                } else if (response.status === false) {
+                    let errors = response.errors.join('\n');
+                    alert(errors);
+                }
+            }
+        };
         xhr.send(jsonData);
     }
 

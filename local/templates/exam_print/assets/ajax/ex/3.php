@@ -8,25 +8,36 @@ use Bitrix\Main\Server;
 use Bitrix\Main\Loader;
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php';
-
 header('Content-Type: application/json;  charset=UTF-8');
 
 Loader::includeModule('iblock');
 
 $jsonData = file_get_contents('php://input');
 
+if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "AJAX" && $_SERVER["REQUEST_METHOD"] != "POST") {
+    $errors[] = 'Неверный тип запроса';
+    echo json_encode(['errors' => $errors , 'status' => false]);
+    exit();
+}
+
 $jsonData = json_decode($jsonData, true);
 
-$code = $jsonData["serverResponse111"];
+$code = $jsonData["serverResponseWaitCode"];
+$codeOfConfirm = $jsonData["confirmation_code"];
 
+// на будущее
+//if ($jsonData['sessid'] != bitrix_sessid()) {
+//    $errors[] = 'Нет соответствий с сессией';
+//    exit;
+//}
 $element = [];
+
 $rsElement = CIBlockElement::GetList(
     false,
     [
-           'IBLOCK_ID' => 6,
-           "ACTIVE" => "Y",
-           'CODE' => $code,
-           'DETAIL_TEXT' => $jsonData["confirmation_code"]
+        'IBLOCK_ID' => 6,
+        "ACTIVE" => "Y",
+        'CODE' => $code,
     ],
     false,
     false,
@@ -41,6 +52,15 @@ $rsElement = CIBlockElement::GetList(
 
 while ($arData = $rsElement->GetNext()) {
     $element = $arData;
+}
+
+if ($codeOfConfirm !== $element['DETAIL_TEXT']) {
+    $errors[] = 'неправильный код или пустое поле';
+    $rsElement = CIBlockElement::Delete(
+        $element['ID']
+    );
+    echo json_encode(['errors' => $errors , 'status' => false]);
+    exit;
 }
 
     $el = new CIBlockElement;
@@ -60,3 +80,6 @@ while ($arData = $rsElement->GetNext()) {
 $rsElement = CIBlockElement::Delete(
     $element['ID']
 );
+
+    echo json_encode(['status' => true]);
+    exit;

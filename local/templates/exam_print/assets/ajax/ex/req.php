@@ -15,39 +15,19 @@ Loader::includeModule('iblock');
 
 $jsonData = file_get_contents('php://input');
 
-//if ($_SERVER['HTTP_BX_AJAX'] == "false" && $_SERVER["REQUEST_METHOD"] != "POST") {
-//    $errors[] = 'Неверный тип запроса';
-//    exit();
-//}
-//
-//$phoneRegex = '/^\+\d{1,2} \(\d{3}\) \d{3}-\d{2}-\d{2}$/';
-//$emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
-//$nameRegex = '/^[А-Яа-яЁё\s]+$/u';
-//
+if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "AJAX" && $_SERVER["REQUEST_METHOD"] != "POST") {
+    $errors[] = 'Неверный тип запроса';
+    echo json_encode(['errors' => $errors , 'status' => false]);
+    exit();
+}
+
 $jsonData = json_decode($jsonData, true);
 
-//
-//if ($jsonData['sessid'] != bitrix_sessid()) {
-//    $errors[] = 'Нет соответствий с сессией';
-//    exit;
-//}
-//
-//if ( ! preg_match($phoneRegex, $jsonData['Phone'])) {
-//    $errors[] = 'Неверный формат номера телефона';
-//}
-//
-//if ( ! preg_match($emailRegex, $jsonData['Email'])) {
-//    $errors[] = 'Неверный формат электронной почты';
-//}
-//
-//if ( ! preg_match($nameRegex, $jsonData['Name'])) {
-//    $errors[] = 'Неверный формат имени';
-//}
-//
-//if ( ! empty($errors)) {
-//    echo json_encode(['errors' => $errors]);
-//    exit;
-//}
+if ($jsonData['sessid'] != bitrix_sessid()) {
+    $errors[] = 'Нет соответствий с сессией';
+    exit;
+}
+
 if (!isset($jsonData['phone'])) {
     $errors[] = 'пустой телефон';
     echo json_encode(['errors' => $errors , 'status' => false]);
@@ -73,7 +53,7 @@ $a = randString(20);
         exit;
     }
 
-echo json_encode(['a' => $a, 'data' => $jsonData]);
+echo json_encode(['a' => $a] );
 exit;
 
 
