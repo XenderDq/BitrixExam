@@ -13,23 +13,9 @@ header('Content-Type: application/json;  charset=UTF-8');
 Loader::includeModule('iblock');
 
 $jsonData = file_get_contents('php://input');
-
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "AJAX" && $_SERVER["REQUEST_METHOD"] != "POST") {
-    $errors[] = 'Неверный тип запроса';
-    echo json_encode(['errors' => $errors , 'status' => false]);
-    exit();
-}
-
 $jsonData = json_decode($jsonData, true);
-
 $code = $jsonData["serverResponseWaitCode"];
 $codeOfConfirm = $jsonData["confirmation_code"];
-
-// на будущее
-//if ($jsonData['sessid'] != bitrix_sessid()) {
-//    $errors[] = 'Нет соответствий с сессией';
-//    exit;
-//}
 $element = [];
 
 $rsElement = CIBlockElement::GetList(
@@ -53,6 +39,21 @@ $rsElement = CIBlockElement::GetList(
 while ($arData = $rsElement->GetNext()) {
     $element = $arData;
 }
+
+if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "AJAX" && $_SERVER["REQUEST_METHOD"] != "POST") {
+    $errors[] = 'Неверный тип запроса';
+    $rsElement = CIBlockElement::Delete(
+        $element['ID']
+    );
+    echo json_encode(['errors' => $errors , 'status' => false]);
+    exit();
+}
+
+// на будущее
+//if ($jsonData['sessid'] != bitrix_sessid()) {
+//    $errors[] = 'Нет соответствий с сессией';
+//    exit;
+//}
 
 if ($codeOfConfirm !== $element['DETAIL_TEXT']) {
     $errors[] = 'неправильный код или пустое поле';
